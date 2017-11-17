@@ -41,6 +41,12 @@ $colors: (
   dark:       #222
 );
 
+$background-ios-color: color($colors, dark);
+$background-md-color: color($colors, dark);
+$background-wp-color: color($colors, dark);
+
+$text-color: color($colors, light);
+
 
 // App iOS Variables
 // --------------------------------------------------
