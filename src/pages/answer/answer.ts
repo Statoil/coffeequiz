@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the AnswerPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { QuestionPage } from "../question/question";
 
 @Component({
   selector: 'page-answer',
@@ -15,9 +9,20 @@ import { NavController, NavParams } from 'ionic-angular';
 export class AnswerPage {
 
   selectedItem: any;
+  seconds: number = 3;
+
+  countDown: number = setInterval(() => {
+    this.seconds--;
+    if (this.seconds <= 0) {
+      clearInterval(this.countDown);
+      this.navCtrl.push(QuestionPage);
+    }
+  }, 1000);
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.selectedItem = navParams.get('answer');
+
+
   }
 
 
