@@ -8,11 +8,14 @@ import { MyApp } from './app.component';
 import { QuestionPage } from "../pages/question/question";
 import { AnswerPage } from "../pages/answer/answer";
 
+import { AnimationService, AnimatesDirective } from "css-animator";
+
 @NgModule({
   declarations: [
     MyApp,
     QuestionPage,
-    AnswerPage
+    AnswerPage,
+    AnimatesDirective
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,8 @@ import { AnswerPage } from "../pages/answer/answer";
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AnimationService
   ]
 })
 export class AppModule {}
