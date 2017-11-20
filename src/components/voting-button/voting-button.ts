@@ -15,7 +15,6 @@ export class VotingButtonComponent {
   text: string;
 
   buttonClick() {
-    console.log(this.answer);
     this.animator
       .setType('rubberBand')
       .animate(this.elementRef.nativeElement)
@@ -29,8 +28,6 @@ export class VotingButtonComponent {
               public modalCtrl: ModalController) {
     this.animator = animationService.builder();
     this.elementRef = elementRef;
-    console.log('Hello VotingButtonComponent Component');
-    this.text = 'Hello World';
   }
 
 }

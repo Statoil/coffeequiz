@@ -1,0 +1,9 @@
+[
+    {
+      "question": "Which of these Statoil-countries exports the most coffee on a yearly basis?<br>(i.e we can have a little Subsidiary in that country called Statcaff or CoffOil)",
+      "image": "q1b.png",
+      "alternatives": ["Colombia", "Brazil", "Indonesia"],
+      "answer": 1
+    }
+  ]
+

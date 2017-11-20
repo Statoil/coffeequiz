@@ -9,7 +9,8 @@ import { QuestionPage } from "../pages/question/question";
 import { AnswerPage } from "../pages/answer/answer";
 
 import { AnimationService, AnimatesDirective } from "css-animator";
-import {VotingButtonComponent} from "../components/voting-button/voting-button";
+import { VotingButtonComponent } from "../components/voting-button/voting-button";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {VotingButtonComponent} from "../components/voting-button/voting-button";
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

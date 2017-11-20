@@ -1,27 +1,27 @@
-<ion-content padding>
+<ion-content padding *ngIf="quizItem">
 
   <ion-grid>
     <ion-row align-items-center>
       <ion-col col-1></ion-col>
 
-      <ion-col col-10 class="question" text-center>{{quizItem.question}}</ion-col>
+      <ion-col col-10 class="question" text-center [innerHTML]="quizItem.question"></ion-col>
       <ion-col col-1><!--suppress HtmlUnknownTarget -->
         <img src="assets/imgs/statoil_horizontal_neg_small.png">
       </ion-col>
     </ion-row>
     <ion-row align-items-center>
       <ion-col col-1></ion-col>
-      <ion-col col-10 text-center><img src="assets/imgs/{{quizItem.img}}" style="padding: 1.5vw"/></ion-col>
+      <ion-col col-10 text-center><img [src]="quizItem.imageSrc" style="padding: 1.5vw"/></ion-col>
       <ion-col col-1></ion-col>
     </ion-row>
     <ion-row justify-content-center>
-      <ion-col col-3>
+      <ion-col col-4 col-md-3>
         <voting-button [answer]="quizItem.alternatives[0]" [truth]="quizItem.getTruth()"></voting-button>
       </ion-col>
-      <ion-col col-3>
+      <ion-col col-4 col-md-3>
         <voting-button [answer]="quizItem.alternatives[1]" [truth]="quizItem.getTruth()"></voting-button>
       </ion-col>
-      <ion-col col-3>
+      <ion-col col-4 col-md-3>
         <voting-button [answer]="quizItem.alternatives[2]" [truth]="quizItem.getTruth()"></voting-button>
       </ion-col>
     </ion-row>
