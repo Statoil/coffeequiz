@@ -9,13 +9,15 @@ import { QuestionPage } from "../pages/question/question";
 import { AnswerPage } from "../pages/answer/answer";
 
 import { AnimationService, AnimatesDirective } from "css-animator";
+import {VotingButtonComponent} from "../components/voting-button/voting-button";
 
 @NgModule({
   declarations: [
     MyApp,
     QuestionPage,
     AnswerPage,
-    AnimatesDirective
+    AnimatesDirective,
+    VotingButtonComponent
   ],
   imports: [
     BrowserModule,

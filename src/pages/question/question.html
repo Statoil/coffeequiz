@@ -1,38 +1,30 @@
 <ion-content padding>
 
   <ion-grid>
-    <ion-row>
-      <ion-col col-12 class="question">1) Which of these Statoil-countries exports the most coffee on a yearly basis?
+    <ion-row align-items-center>
+      <ion-col col-1></ion-col>
+
+      <ion-col col-10 class="question" text-center>Which of these Statoil-countries exports the most coffee on a yearly basis?<br>
         (i.e we can have a little Subsidiary in that country called Statcaff or CoffOil)
       </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-3 class="alternatives">
-        <ion-row style="min-height: 44px">
-          <div animates #animation1="animates" text-center>
-            <button ion-button round
-                    (click)="animation1.start({type: 'rubberBand', duration: '1000'});answerSelected('Colombia')">
-              Colombia
-            </button>
-          </div>
-        </ion-row>
-        <ion-row style="min-height: 44px">
-          <div animates #animation2="animates" text-center>
-            <button ion-button round
-                    (click)="animation2.start({type: 'rubberBand', duration: '1000'});answerSelected('Brazil')">Brazil
-            </button>
-          </div>
-        </ion-row>
-        <ion-row style="min-height: 44px">
-          <div animates #animation3="animates" text-center>
-            <button ion-button round
-                    (click)="animation3.start({type: 'rubberBand', duration: '1000'});answerSelected('Indonesia')">
-              Indonesia
-            </button>
-          </div>
-        </ion-row>
+      <ion-col col-1><img src="assets/imgs/statoil_horizontal_neg_small.png">
       </ion-col>
-      <ion-col col-9><img src="assets/imgs/q1.png"/></ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col col-1></ion-col>
+      <ion-col col-10><img src="assets/imgs/q1.png"/></ion-col>
+      <ion-col col-1></ion-col>
+    </ion-row>
+    <ion-row justify-content-center="">
+      <ion-col col-3>
+        <voting-button [answer]="answer1"></voting-button>
+      </ion-col>
+      <ion-col col-3>
+        <voting-button [answer]="answer2"></voting-button>
+      </ion-col>
+      <ion-col col-3>
+        <voting-button [answer]="answer3"></voting-button>
+      </ion-col>
     </ion-row>
   </ion-grid>
 

@@ -9,6 +9,10 @@ import { delay } from 'lodash';
 })
 export class QuestionPage {
 
+  answer1: string = "Colombia";
+  answer2: string = "Brazil";
+  answer3: string = "Indonesia";
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
