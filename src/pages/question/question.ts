@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { AnswerPage } from "../answer/answer";
 import { delay } from 'lodash';
+import { QuizItem } from "../../app/quizitem";
 
 @Component({
   selector: 'page-question',
@@ -9,13 +10,14 @@ import { delay } from 'lodash';
 })
 export class QuestionPage {
 
-  answer1: string = "Colombia";
-  answer2: string = "Brazil";
-  answer3: string = "Indonesia";
+  quizItem: QuizItem = new QuizItem();
 
-  truth: string = this.answer1;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController) {
+    this.quizItem.question = "Which of these Statoil-countries exports the most coffee on a yearly basis?<br>\n" +
+      "(i.e we can have a little Subsidiary in that country called Statcaff or CoffOil)";
+    this.quizItem.alternatives = ["Colombia", "Brazil", "Indonesia"];
+    this.quizItem.truthIndex = 1;
+    this.quizItem.img = "q1b.png";
   }
 
   answerSelected(answer) {

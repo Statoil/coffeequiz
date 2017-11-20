@@ -4,26 +4,25 @@
     <ion-row align-items-center>
       <ion-col col-1></ion-col>
 
-      <ion-col col-10 class="question" text-center>Which of these Statoil-countries exports the most coffee on a yearly basis?<br>
-        (i.e we can have a little Subsidiary in that country called Statcaff or CoffOil)
-      </ion-col>
-      <ion-col col-1><img src="assets/imgs/statoil_horizontal_neg_small.png">
+      <ion-col col-10 class="question" text-center>{{quizItem.question}}</ion-col>
+      <ion-col col-1><!--suppress HtmlUnknownTarget -->
+        <img src="assets/imgs/statoil_horizontal_neg_small.png">
       </ion-col>
     </ion-row>
     <ion-row align-items-center>
       <ion-col col-1></ion-col>
-      <ion-col col-10 text-center><img src="assets/imgs/q1.png" style="padding: 1.5vw"/></ion-col>
+      <ion-col col-10 text-center><img src="assets/imgs/{{quizItem.img}}" style="padding: 1.5vw"/></ion-col>
       <ion-col col-1></ion-col>
     </ion-row>
     <ion-row justify-content-center>
       <ion-col col-3>
-        <voting-button [answer]="answer1" [truth]="truth"></voting-button>
+        <voting-button [answer]="quizItem.alternatives[0]" [truth]="quizItem.getTruth()"></voting-button>
       </ion-col>
       <ion-col col-3>
-        <voting-button [answer]="answer2" [truth]="truth"></voting-button>
+        <voting-button [answer]="quizItem.alternatives[1]" [truth]="quizItem.getTruth()"></voting-button>
       </ion-col>
       <ion-col col-3>
-        <voting-button [answer]="answer3" [truth]="truth"></voting-button>
+        <voting-button [answer]="quizItem.alternatives[2]" [truth]="quizItem.getTruth()"></voting-button>
       </ion-col>
     </ion-row>
   </ion-grid>
