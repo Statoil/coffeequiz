@@ -8,7 +8,9 @@ import { ViewController } from 'ionic-angular';
 })
 export class AnswerPage {
 
-  selectedItem: any;
+  answer: string;
+  truth: string;
+  isCorrect: boolean;
   seconds: number = 3;
 
   countDown: number = setInterval(() => {
@@ -20,11 +22,9 @@ export class AnswerPage {
   }, 1000);
 
   constructor(public navParams: NavParams, private viewCtrl: ViewController) {
-    this.selectedItem = navParams.get('answer');
-    console.log(this.selectedItem);
-
+    this.answer = navParams.get('answer');
+    this.truth = navParams.get('truth');
+    this.isCorrect = this.answer === this.truth;
   }
-
-
 
 }

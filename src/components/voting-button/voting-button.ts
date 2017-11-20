@@ -9,6 +9,7 @@ import { ModalController } from "ionic-angular";
 })
 export class VotingButtonComponent {
   @Input() answer: string;
+  @Input() truth: string;
 
   private animator: AnimationBuilder;
   text: string;
@@ -19,7 +20,7 @@ export class VotingButtonComponent {
       .setType('rubberBand')
       .animate(this.elementRef.nativeElement)
       .then(() => {
-        const modal = this.modalCtrl.create(AnswerPage, {answer: this.answer});
+        const modal = this.modalCtrl.create(AnswerPage, {answer: this.answer, truth: this.truth});
         modal.present();
       });
   }

@@ -13,6 +13,8 @@ export class QuestionPage {
   answer2: string = "Brazil";
   answer3: string = "Indonesia";
 
+  truth: string = this.answer1;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
