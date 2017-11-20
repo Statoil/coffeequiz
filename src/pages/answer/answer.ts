@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import { QuestionPage } from "../question/question";
+import { NavParams } from 'ionic-angular';
+import { ViewController } from 'ionic-angular';
 
 @Component({
   selector: 'page-answer',
@@ -15,13 +15,13 @@ export class AnswerPage {
     this.seconds--;
     if (this.seconds <= 0) {
       clearInterval(this.countDown);
-      this.navCtrl.push(QuestionPage);
+      this.viewCtrl.dismiss();
     }
   }, 1000);
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navParams: NavParams, private viewCtrl: ViewController) {
     this.selectedItem = navParams.get('answer');
-
+    console.log(this.selectedItem);
 
   }
 

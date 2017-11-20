@@ -1,14 +1,8 @@
 import { Component, ElementRef, Input } from '@angular/core';
 import { AnimationService, AnimationBuilder } from "css-animator";
 import { AnswerPage } from "../../pages/answer/answer";
-import { NavController } from 'ionic-angular';
+import { ModalController } from "ionic-angular";
 
-/**
- * Generated class for the VotingButtonComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
 @Component({
   selector: 'voting-button',
   templateUrl: 'voting-button.html'
@@ -19,17 +13,19 @@ export class VotingButtonComponent {
   private animator: AnimationBuilder;
   text: string;
 
-  buttonClick(answer: any) {
+  buttonClick() {
+    console.log(this.answer);
     this.animator
       .setType('rubberBand')
       .animate(this.elementRef.nativeElement)
       .then(() => {
-        this.navCtrl.push(AnswerPage, {answer});
+        const modal = this.modalCtrl.create(AnswerPage, {answer: this.answer});
+        modal.present();
       });
   }
 
   constructor(animationService: AnimationService, private elementRef: ElementRef,
-              private navCtrl: NavController) {
+              public modalCtrl: ModalController) {
     this.animator = animationService.builder();
     this.elementRef = elementRef;
     console.log('Hello VotingButtonComponent Component');
