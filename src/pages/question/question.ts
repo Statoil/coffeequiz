@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { QuizItem } from "../../app/quizitem";
 import { HttpClient } from "@angular/common/http";
 import { NavParams, NavController } from "ionic-angular";
+import { Alternative } from "../../app/alternative";
 
 @Component({
   selector: 'page-question',
@@ -20,7 +21,11 @@ export class QuestionPage {
     this.http.get<any[]>("assets/quizdata.json")
       .subscribe(data => {
         const quizItemId =  this.navParams.get('quizItemId') || 0;
-        const quizData = data.map(item => new QuizItem(item.question, "assets/imgs/quiz/" + item.image, item.alternatives, item.answer));
+        const quizData = data.map(item => new QuizItem(
+          item.question,
+          "assets/imgs/quiz/" + item.image,
+          item.alternatives.map(item => new Alternative(item)),
+          item.answer));
         this.prevQuizItemId = quizItemId > 0 ? quizItemId - 1 : undefined;
         this.nextQuizItemId = quizItemId < (quizData.length - 1) ? quizItemId + 1 : undefined;
         this.quizItem = quizData[quizItemId];
