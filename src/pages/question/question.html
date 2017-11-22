@@ -10,9 +10,9 @@
       </ion-col>
     </ion-row>
     <ion-row align-items-center>
-      <ion-col col-1></ion-col>
+      <ion-col col-1><ion-icon class="nav-icon" name="arrow-dropleft-circle" (click)="goToPage(prevQuizItemId)" color="primary" *ngIf="prevQuizItemId !== undefined"></ion-icon></ion-col>
       <ion-col col-10 text-center><img [src]="quizItem.imageSrc" style="padding: 1.5vw"/></ion-col>
-      <ion-col col-1></ion-col>
+      <ion-col col-1><ion-icon class="nav-icon" name="arrow-dropright-circle" (click)="goToPage(nextQuizItemId)" color="primary" *ngIf="nextQuizItemId"></ion-icon></ion-col>
     </ion-row>
     <ion-row justify-content-center>
       <ion-col col-4 col-md-3>
