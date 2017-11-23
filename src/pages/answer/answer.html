@@ -1,17 +1,17 @@
+<!--suppress HtmlUnknownTarget -->
 <ion-content padding>
 
   <ion-grid>
     <ion-row>
-      <ion-col col-2></ion-col>
-      <ion-col col-8 class="result" *ngIf="isCorrect" text-center><img src="assets/imgs/correct.png"></ion-col>
-      <ion-col col-8 class="result" *ngIf="!isCorrect" text-center><img src="assets/imgs/incorrect.png"></ion-col>
-      <ion-col col-2 style="text-align: end">{{seconds}}</ion-col>
+      <ion-col col-3></ion-col>
+      <ion-col col-6 class="result" *ngIf="isCorrect" text-center><img src="assets/imgs/correct.png"></ion-col>
+      <ion-col col-6 class="result" *ngIf="!isCorrect" text-center><img src="assets/imgs/incorrect.png"></ion-col>
+      <ion-col col-3 style="text-align: end">{{seconds}}</ion-col>
     </ion-row>
     <ion-row>
-      <ion-col col-2></ion-col>
-      <ion-col col-8 class="result" *ngIf="isCorrect" text-center>{{answer}} is correct!</ion-col>
-      <ion-col col-8 class="result" *ngIf="!isCorrect" text-center>{{answer}} is not correct.<br>The correct answer is <u>{{truth}}</u></ion-col>
-      <ion-col col-2 align-items-end=""></ion-col>
+      <ion-col col-1></ion-col>
+      <ion-col col-10 class="result" text-center [innerHTML]="messageHtml"></ion-col>
+      <ion-col col-1 align-items-end=""></ion-col>
     </ion-row>
   </ion-grid>
 
