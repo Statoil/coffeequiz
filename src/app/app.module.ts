@@ -8,7 +8,7 @@ import { MyApp } from './app.component';
 import { QuestionPage } from "../pages/question/question";
 import { AnswerPage } from "../pages/answer/answer";
 
-import { AnimationService, AnimatesDirective } from "css-animator";
+import { AnimationService } from "css-animator";
 import { VotingButtonComponent } from "../components/voting-button/voting-button";
 import { HttpClientModule } from "@angular/common/http";
 
@@ -17,7 +17,6 @@ import { HttpClientModule } from "@angular/common/http";
     MyApp,
     QuestionPage,
     AnswerPage,
-    AnimatesDirective,
     VotingButtonComponent
   ],
   imports: [
