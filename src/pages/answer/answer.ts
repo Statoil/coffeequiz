@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavParams } from 'ionic-angular';
 import { ViewController } from 'ionic-angular';
-import { Alternative } from "../../app/alternative";
 
 @Component({
   selector: 'page-answer',
@@ -9,8 +8,8 @@ import { Alternative } from "../../app/alternative";
 })
 export class AnswerPage {
 
-  answer: Alternative;
-  truth: Alternative;
+  answer: string;
+  truth: string;
   isCorrect: boolean;
   seconds: number = 3;
   messageHtml: string;
@@ -28,10 +27,10 @@ export class AnswerPage {
     this.truth = navParams.get('truth');
     this.isCorrect = this.answer == this.truth;
     if (this.isCorrect) {
-      this.messageHtml = `${this.answer.text} is correct!`;
+      this.messageHtml = `${this.answer} is correct!`;
     }
     else {
-      this.messageHtml = `Unfortunately,<br><strong>${this.answer.text}</strong><br>is not correct.<br><br>The correct answer is<br><u>${this.truth.text}</u>`;
+      this.messageHtml = `You answered<br><strong>${this.answer}</strong><br><br><br>The correct answer is<br><u>${this.truth}</u>`;
     }
   }
 

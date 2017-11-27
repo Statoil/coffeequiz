@@ -1,6 +1,3 @@
-<div class="wrapper">
-<div animates text-center>
-  <button ion-button round class="voting-button" (click)="buttonClick();" [innerHtml]="answer.text" [ngStyle]="{'font-size': answer.fontSize ? answer.fontSize : '2.5vw'}">
-  </button>
-</div>
+<div animates>
+  <button ion-button round large color="primary" (click)="buttonClick();">{{answer}}</button>
 </div>

@@ -1,6 +1,6 @@
 [
   {
-    "question": "Which of these Statoil-countries exports the most coffee on a yearly basis?<br>(i.e we can have a little Subsidiary in that country called Statcaff or CoffOil)",
+    "question": "Which of these Statoil-countries exports the most coffee on a yearly basis? (i.e we can have a little Subsidiary in that country called Statcaff or CoffOil)",
     "image": "q01b.png",
     "alternatives": ["Colombia", "Brazil", "Indonesia"],
     "answer": 1
@@ -8,13 +8,13 @@
   {
     "question": "What is the current best guess of the subduction rate in the area where Statoil holds acreage in New Zealand since start of Miocene, i.e last 20 million years?",
     "image": "q02.png",
-    "alternatives": ["50 cm / 1 year", "5 cm / 1 year", {"text": "5 cm / 1000 year", "fontSize": "2.4vw"}],
+    "alternatives": ["50 cm / 1 year", "5 cm / 1 year", "5 cm / 1000 year"],
     "answer": 1
   },
   {
     "question": "Which is the most successful type of stratigraphical trap according to GCQ and the inhouse statistics over the last years?",
     "image": "q03.png",
-    "alternatives": ["Distal front<br>lap", "Side lap", "Proximal updip<br>pinch-out"],
+    "alternatives": ["Distal front lap", "Side lap", "Proximal updip pinch-out"],
     "answer": 1
   },
   {
@@ -26,7 +26,7 @@
   {
     "question": "How can you tell that this person is a geologist?",
     "image": "q05.png",
-    "alternatives": ["He is licking<br>a rock", "He has a rock<br>proof glasses", {"text":"He finds the rock<br>more interesting<br>than the opposite sex", "fontSize": "1.7vw"}],
+    "alternatives": ["He is licking a rock", "He has a rock proof glasses", "He finds the rock more interesting than the opposite sex"],
     "answer": 0
   },
   {
@@ -38,15 +38,15 @@
   {
     "question": "What hydrocarbon type was expected to be found the AD-10  Block in Myanmar?",
     "image": "q07.png",
-    "alternatives": ["Thermogenic<br>gas", "Biogenic gas", "Oil"],
+    "alternatives": ["Thermogenic gas", "Biogenic gas", "Oil"],
     "answer": 1
   },
   {
     "question": "What was the outcome of the pre salt round in Brazil that was just finished?",
     "image": "q08.png",
-    "alternatives": [{"text": "Statoil representative<br>went to the toilet and<br>missed the bidding that<br>was over in 10 min", "fontSize": "1.4vw"},
-      {"text": "Statoil emptied<br>it’s pockets and made<br>a successful bid", "fontSize": "1.7vw"},
-      {"text": "Statoil tried<br>it’s best but<br>failed miserably", "fontSize": "1.7vw"}],
+    "alternatives": ["Statoil representative went to the toilet and missed the bidding that was over in 10 min",
+      "Statoil emptied it’s pockets and made a successful bid",
+      "Statoil tried it’s best but failed miserably"],
     "answer": 1
   },
   {
@@ -64,7 +64,7 @@
   {
     "question": "What is the name of the Basin in India where Statoil was partner in a licence that made a big discovery, until about 2010-ish?",
     "image": "q11.png",
-    "alternatives": ["Mannar Basin", "Konkan Kerala<br>Basin", {"text": "Krishna Godavari<br>Basin", "fontSize": "2.1vw"}],
+    "alternatives": ["Mannar Basin", "Konkan Kerala Basin", "Krishna Godavari Basin"],
     "answer": 2
   },
   {
@@ -76,7 +76,7 @@
   {
     "question": "What peculiar geological feature can be seen in the shallower part on this 3D broadband seismic line?",
     "image": "q13.png",
-    "alternatives": ["Hydrothermal<br>Vents", "Basalt flow", "Remobilised<br>Ooze"],
+    "alternatives": ["Hydrothermal Vents", "Basalt flow", "Remobilised Ooze"],
     "answer": 2
   },
   {
@@ -88,7 +88,7 @@
   {
     "question": "Which famous geological site is this picture from?",
     "image": "q15.png",
-    "alternatives": ["Dorset,<br>England", "Kilkee, Ireland", {"text": "Avaldsnes, west<br>coast Norway<br>close to Utsira", "fontSize": "1.8vw"}],
+    "alternatives": ["Dorset, England", "Kilkee, Ireland", "Avaldsnes, west coast Norway close to Utsira"],
     "answer": 1
   },
   {
@@ -106,7 +106,7 @@
   {
     "question": "What is this very common diagram called that is used to differentiate between different source rock types?",
     "image": "q18b.png",
-    "alternatives": ["Van Koevarden<br>diagram", "Van Halen<br>diagram", "Van Krevelen<br>diagram"],
+    "alternatives": ["Van Koevarden diagram", "Van Halen diagram", "Van Krevelen diagram"],
     "answer": 2
   },
   {

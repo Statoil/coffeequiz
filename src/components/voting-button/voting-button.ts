@@ -2,14 +2,13 @@ import { Component, ElementRef, Input } from '@angular/core';
 import { AnimationService, AnimationBuilder } from "css-animator";
 import { AnswerPage } from "../../pages/answer/answer";
 import { ModalController } from "ionic-angular";
-import { Alternative } from "../../app/alternative";
 
 @Component({
   selector: 'voting-button',
   templateUrl: 'voting-button.html'
 })
 export class VotingButtonComponent {
-  @Input() answer: Alternative;
+  @Input() answer: string;
   @Input() truth: string;
 
   private animator: AnimationBuilder;
