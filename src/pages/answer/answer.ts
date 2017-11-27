@@ -30,7 +30,7 @@ export class AnswerPage {
       this.messageHtml = `${this.answer} is correct!`;
     }
     else {
-      this.messageHtml = `You answered<br><strong>${this.answer}</strong><br><br><br>The correct answer is<br><u>${this.truth}</u>`;
+      this.messageHtml = `The correct answer is<br><br><u>${this.truth}</u>`;
     }
   }
 
