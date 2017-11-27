@@ -11,6 +11,18 @@
                                *ngIf="nextQuizItemId"></ion-icon></ion-col>
     </ion-row>
     <ion-row>
+      <ion-col col-4 text-center>
+          <voting-button [answer]="quizItem.alternatives[0]" [truth]="quizItem.truth"></voting-button>
+      </ion-col>
+      <ion-col col-4 text-center>
+        <voting-button [answer]="quizItem.alternatives[1]" [truth]="quizItem.truth"></voting-button>
+      </ion-col>
+      <ion-col col-4 text-center>
+        <voting-button [answer]="quizItem.alternatives[2]" [truth]="quizItem.truth"></voting-button>
+      </ion-col>
+    </ion-row>
+<!--
+    <ion-row>
       <ion-col>
         <ion-row style="height: 68px;">
           <ion-col text-center style="padding: 2px;"><voting-button [answer]="quizItem.alternatives[0]" [truth]="quizItem.truth"></voting-button></ion-col>
@@ -26,6 +38,7 @@
 
       </ion-col>
     </ion-row>
+-->
   </ion-grid>
 
 </ion-content>

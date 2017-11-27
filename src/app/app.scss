@@ -14,3 +14,9 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+@font-face{
+  font-family:"Statoil Display Medium";
+  src:url(../assets/fonts/statoil_display_medium.ttf?1505390547) format('truetype'),
+  url(../assets/fonts/statoil_display_medium.woff?1505390547) format('woff'),
+  url(../assets/fonts/statoil_display_medium.svg?1505390547) format('svg')}
