@@ -1,5 +1,6 @@
 const winston = require('winston');
 const dateformat = require('dateformat');
+const path = require("path");
 const logLevel = process.env.LOG_LEVEL ? process.env.LOG_LEVEL : 'debug';
 
 winston.configure({
@@ -9,7 +10,7 @@ winston.configure({
             formatter: logFormatter
         }),
         new (winston.transports.File)({
-            filename: 'logs/server.log',
+            filename: path.join(__dirname, 'logs/server.log'),
             json: false,
             formatter: logFormatter
         })
