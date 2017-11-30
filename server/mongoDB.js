@@ -8,15 +8,15 @@ const dbDisabled = process.env.DB_DISABLED || false;
 const url = process.env.DB_URL || 'mongodb://localhost:27018/coffequiz';
 let db;
 
-logger.info(dbDisabled ? "DB disabled" : "DB url: " + url);
-
 function connect() {
   if (dbDisabled) {
+    logger.info("DB disabled");
     return Promise.resolve();
   }
   return MongoClient.connect(url)
     .then(database => {
       db = database;
+      logger.info("Connected to DB: " + url);
     });
 }
 
