@@ -4,8 +4,7 @@ const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 const logger = require('./logger');
 
-// Connection URL
-const url = 'mongodb://localhost:27018/coffequiz';
+const url = process.env.DB_URL || 'mongodb://localhost:27018/coffequiz';
 let db;
 
 function connect() {
