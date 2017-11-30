@@ -1,0 +1,20 @@
+[
+  {
+    "id": 0,
+    "question": "Which of these Statoil-countries exports the most coffee on a yearly basis? (i.e we can have a little Subsidiary in that country called Statcaff or CoffOil)",
+    "image": "q01b.png",
+    "alternatives": ["Colombia", "Brazil", "Indonesia"],
+    "answer": 1,
+    "startTime": "2017-11-29T20:00:00"
+  },
+  {
+    "id": 1,
+    "question": "What is the current best guess of the subduction rate in the area where Statoil holds acreage in New Zealand since start of Miocene, i.e last 20 million years?",
+    "image": "q02.png",
+    "alternatives": ["50 cm / 1 year", "5 cm / 1 year", "5 cm / 1000 year"],
+    "answer": 1,
+    "startTime": "2017-11-29T20:01:00"
+  }
+
+]
+

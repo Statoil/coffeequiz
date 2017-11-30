@@ -11,6 +11,7 @@ import { AnswerPage } from "../pages/answer/answer";
 import { AnimationService } from "css-animator";
 import { VotingButtonComponent } from "../components/voting-button/voting-button";
 import { HttpClientModule } from "@angular/common/http";
+import { QuizServiceProvider } from '../providers/quiz-service/quiz-service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { HttpClientModule } from "@angular/common/http";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AnimationService
+    AnimationService,
+    QuizServiceProvider
   ]
 })
 export class AppModule {}
