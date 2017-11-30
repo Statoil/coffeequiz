@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { QuizItem } from "../../app/quizitem";
 import { HttpClient } from "@angular/common/http";
 import { NavParams, NavController } from "ionic-angular";
+import { ENV } from '@app/env';
 
 @Component({
   selector: 'page-question',
@@ -11,6 +12,7 @@ export class QuestionPage {
   quizItem: QuizItem;
   nextQuizItemId: number;
   prevQuizItemId: number;
+  env: string;
 
   goToPage(pageId: number) {
     this.navCtrl.setRoot(QuestionPage, {'quizItemId': pageId});
@@ -31,6 +33,7 @@ export class QuestionPage {
         this.nextQuizItemId = quizItemId < (quizData.length - 1) ? quizItemId + 1 : undefined;
         this.quizItem = quizData[quizItemId];
       });
+    this.env = ENV.mode || 'Unknown';
   }
 
 }

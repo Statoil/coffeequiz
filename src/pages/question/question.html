@@ -11,6 +11,9 @@
                                *ngIf="nextQuizItemId"></ion-icon></ion-col>
     </ion-row>
     <ion-row>
+      <ion-col>{{env}}</ion-col>
+    </ion-row>
+    <ion-row>
       <ion-col col-4 text-center>
         <voting-button [quizItem]="quizItem" [answerIndex]="0"></voting-button>
       </ion-col>

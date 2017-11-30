@@ -57,6 +57,7 @@
     "npm": "5.5.1"
   },
   "config": {
+    "ionic_webpack": "./config/webpack.config.js",
     "ionic_copy": "./config/copy.config.js"
   },
   "cordova": {
