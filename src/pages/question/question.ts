@@ -13,15 +13,15 @@ export class QuestionPage {
   nextQuizItemId: number;
   prevQuizItemId: number;
   browseMode: boolean;
+  intervalId: any;
 
   goToPage(pageId: number) {
-    this.navCtrl.setRoot(QuestionPage, {'quizItemId': pageId, 'browseMode': this.browseMode});
+    this.navCtrl.setRoot(QuestionPage, {'quizItemId': pageId});
   }
 
   constructor(private navParams: NavParams, private navCtrl: NavController, private quizService: QuizServiceProvider) {
-    this.browseMode = this.navParams.get('browseMode') === 'true' || this.navParams.get('browseMode') === true;
-    const possibleQuizItemId = _.toNumber(this.navParams.get('quizItemId'));
-    const quizItemId =  _.isInteger(possibleQuizItemId) ?  possibleQuizItemId : null;
+    this.browseMode = _.isInteger(_.toNumber(this.navParams.get('quizItemId')));
+    const quizItemId =  this.browseMode ?  _.toNumber(this.navParams.get('quizItemId')) : null;
     this.quizService.getQuizData()
       .subscribe(quizData => {
         this.prevQuizItemId = quizItemId > 0 ? quizItemId - 1 : undefined;
@@ -36,7 +36,22 @@ export class QuestionPage {
 
   static selectQuizItemByDate(quizData: QuizItem[]): QuizItem {
     const possibleIndex = _.sortedIndex(quizData.map(quizItem => quizItem.startTime), new Date()) - 1;
-    return quizData[Math.max(0, possibleIndex)];
+    let index = Math.max(0, possibleIndex);
+    console.log("selected index: " + index);
+    return quizData[index];
   }
 
+  // noinspection JSUnusedGlobalSymbols
+  ngOnInit() {
+    if (!this.browseMode) {
+      this.intervalId = setInterval(() => this.navCtrl.setRoot(QuestionPage), 60000);
+    }
+  }
+
+  // noinspection JSUnusedGlobalSymbols
+  ngOnDestroy() {
+    if (this.intervalId) {
+      clearTimeout(this.intervalId);
+    }
+  }
 }

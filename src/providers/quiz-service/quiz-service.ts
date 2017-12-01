@@ -21,7 +21,7 @@ export class QuizServiceProvider {
   }
 
   getQuizData() {
-    return this.http.get<any[]>("assets/quizdata_test.json")
+    return this.http.get<any[]>("assets/quizdata.json")
       .map(data => data.map(item => new QuizItem(item.id,
             item.question,
             "assets/imgs/quiz/" + item.image,
