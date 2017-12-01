@@ -6,6 +6,7 @@ import { QuizItem} from "../../app/quizitem";
 import { QuizServiceProvider } from "../../providers/quiz-service/quiz-service";
 import { QuizResponse } from "../../app/quizresponse";
 import { ENV } from '@app/env';
+import { Platform } from 'ionic-angular';
 
 @Component({
   selector: 'voting-button',
@@ -30,12 +31,16 @@ export class VotingButtonComponent {
   processAnswer() {
     const modal = this.modalCtrl.create(AnswerPage, {answer: this.quizItem.getAnswer(this.answerIndex), truth: this.quizItem.getTruth()});
     modal.present();
-    const response = new QuizResponse(this.quizItem.id, this.answerIndex, this.quizItem.isTrue(this.answerIndex), this.mode);
+    const response = new QuizResponse(this.quizItem.id, this.answerIndex, this.quizItem.isTrue(this.answerIndex), this.mode, this.getPlatform());
     this.quizService.saveResponse(response)
   }
 
+  getPlatform(): string {
+    return this.platform.is("ios") ? "ios": "web";
+  }
+
   constructor(public animationService: AnimationService, private elementRef: ElementRef,
-              public modalCtrl: ModalController, private quizService: QuizServiceProvider) {
+              public modalCtrl: ModalController, private quizService: QuizServiceProvider, private platform: Platform) {
     this.animator = animationService.builder();
     this.elementRef = elementRef;
   }

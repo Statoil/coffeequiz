@@ -4,7 +4,6 @@ import { NavParams, NavController } from "ionic-angular";
 import * as _ from "lodash";
 import { QuizServiceProvider } from "../../providers/quiz-service/quiz-service";
 import { ENV } from '@app/env';
-import { Platform } from 'ionic-angular';
 
 @Component({
   selector: 'page-question',
@@ -17,13 +16,12 @@ export class QuestionPage {
   browseMode: boolean;
   intervalId: any;
   envName: string = ENV.mode;
-  platforms = this.platform.platforms();
 
   goToPage(pageId: number) {
     this.navCtrl.setRoot(QuestionPage, {'quizItemId': pageId});
   }
 
-  constructor(private navParams: NavParams, private navCtrl: NavController, private quizService: QuizServiceProvider, private platform: Platform) {
+  constructor(private navParams: NavParams, private navCtrl: NavController, private quizService: QuizServiceProvider) {
     this.browseMode = _.isInteger(_.toNumber(this.navParams.get('quizItemId')));
     const quizItemId =  this.browseMode ?  _.toNumber(this.navParams.get('quizItemId')) : null;
     this.quizService.getQuizData()
