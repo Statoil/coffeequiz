@@ -3,6 +3,7 @@ import { QuizItem } from "../../app/quizitem";
 import { NavParams, NavController } from "ionic-angular";
 import * as _ from "lodash";
 import {QuizServiceProvider} from "../../providers/quiz-service/quiz-service";
+import { ENV } from '@app/env';
 
 @Component({
   selector: 'page-question',
@@ -14,12 +15,14 @@ export class QuestionPage {
   prevQuizItemId: number;
   browseMode: boolean;
   intervalId: any;
+  envName: string;
 
   goToPage(pageId: number) {
     this.navCtrl.setRoot(QuestionPage, {'quizItemId': pageId});
   }
 
   constructor(private navParams: NavParams, private navCtrl: NavController, private quizService: QuizServiceProvider) {
+    this.envName = ENV.mode;
     this.browseMode = _.isInteger(_.toNumber(this.navParams.get('quizItemId')));
     const quizItemId =  this.browseMode ?  _.toNumber(this.navParams.get('quizItemId')) : null;
     this.quizService.getQuizData()
