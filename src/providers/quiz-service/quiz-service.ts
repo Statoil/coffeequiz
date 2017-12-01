@@ -1,19 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Response } from "../../app/response";
-import {QuizItem} from "../../app/quizitem";
+import { QuizResponse } from "../../app/quizresponse";
+import { QuizItem } from "../../app/quizitem";
 import "rxjs/add/operator/map";
+import { ENV } from '@app/env';
 
 
 @Injectable()
 export class QuizServiceProvider {
+  apiBase: string = ENV.apiBase;
 
   constructor(public http: HttpClient) {
   }
 
-  saveResponse(response: Response):void {
+  saveResponse(quizResponse: QuizResponse):void {
+    const url = this.apiBase + '/api/response';
     this.http
-      .post('/api/response', response)
+      .post(url, quizResponse)
       .subscribe(
         () => {},
         err => console.error(err.message)

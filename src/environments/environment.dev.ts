@@ -1,3 +1,5 @@
+// noinspection JSUnusedGlobalSymbols
 export const ENV = {
-  mode: 'Development'
-}
+  mode: "dev",
+  apiBase: ''
+};

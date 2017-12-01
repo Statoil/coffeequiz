@@ -4,7 +4,8 @@ import { AnswerPage } from "../../pages/answer/answer";
 import { ModalController } from "ionic-angular";
 import { QuizItem} from "../../app/quizitem";
 import { QuizServiceProvider } from "../../providers/quiz-service/quiz-service";
-import { Response } from "../../app/response";
+import { QuizResponse } from "../../app/quizresponse";
+import { ENV } from '@app/env';
 
 @Component({
   selector: 'voting-button',
@@ -17,6 +18,7 @@ export class VotingButtonComponent {
 
   private animator: AnimationBuilder;
   text: string;
+  mode: string = ENV.mode;
 
   buttonClick() {
     this.animator
@@ -28,7 +30,7 @@ export class VotingButtonComponent {
   processAnswer() {
     const modal = this.modalCtrl.create(AnswerPage, {answer: this.quizItem.getAnswer(this.answerIndex), truth: this.quizItem.getTruth()});
     modal.present();
-    const response = new Response(this.quizItem.id, this.answerIndex, this.quizItem.isTrue(this.answerIndex));
+    const response = new QuizResponse(this.quizItem.id, this.answerIndex, this.quizItem.isTrue(this.answerIndex), this.mode);
     this.quizService.saveResponse(response)
   }
 
@@ -38,6 +40,7 @@ export class VotingButtonComponent {
     this.elementRef = elementRef;
   }
 
+  // noinspection JSUnusedGlobalSymbols
   ngOnInit() {
     this.text = this.quizItem.getAnswer(this.answerIndex);
   }

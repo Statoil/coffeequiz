@@ -15,14 +15,13 @@ export class QuestionPage {
   prevQuizItemId: number;
   browseMode: boolean;
   intervalId: any;
-  envName: string;
+  envName: string = ENV.mode;
 
   goToPage(pageId: number) {
     this.navCtrl.setRoot(QuestionPage, {'quizItemId': pageId});
   }
 
   constructor(private navParams: NavParams, private navCtrl: NavController, private quizService: QuizServiceProvider) {
-    this.envName = ENV.mode;
     this.browseMode = _.isInteger(_.toNumber(this.navParams.get('quizItemId')));
     const quizItemId =  this.browseMode ?  _.toNumber(this.navParams.get('quizItemId')) : null;
     this.quizService.getQuizData()
