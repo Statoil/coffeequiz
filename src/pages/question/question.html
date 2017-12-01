@@ -10,7 +10,10 @@
       <ion-col col-1 text-right><ion-icon class="nav-icon" name="arrow-dropright-circle" (click)="goToPage(nextQuizItemId)" color="light"
                                *ngIf="nextQuizItemId && browseMode"></ion-icon></ion-col>
     </ion-row>
-    <ion-row><ion-col>{{envName}}</ion-col></ion-row>
+    <ion-row>
+      <ion-col>{{envName}}</ion-col>
+      <ion-col>{{platforms}}</ion-col>
+    </ion-row>
     <ion-row>
       <ion-col col-4 text-center>
         <voting-button [quizItem]="quizItem" [answerIndex]="0"></voting-button>
