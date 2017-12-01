@@ -6,12 +6,21 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const logger = require("./logger");
 const mongo = require("./mongoDB");
+const cors = require('cors');
 
 const port = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, '../www')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods', 'GET, POST');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.post('/api/response', (req, res) => {
   const quizResponse = req.body;
