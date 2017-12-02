@@ -1,4 +1,4 @@
 export const ENV = {
   mode: "prod",
-  apiBase: 'https://coffequiz.azurewebsites.net'
+  apiBase: 'https://coffequiz.azurewebsites.net',
 };

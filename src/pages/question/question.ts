@@ -25,7 +25,7 @@ export class QuestionPage {
     this.browseMode = _.isInteger(_.toNumber(this.navParams.get('quizItemId')));
     const quizItemId =  this.browseMode ?  _.toNumber(this.navParams.get('quizItemId')) : null;
     this.quizService.getQuizData()
-      .subscribe(quizData => {
+      .then(quizData => {
         this.prevQuizItemId = quizItemId > 0 ? quizItemId - 1 : undefined;
         this.nextQuizItemId = quizItemId < (quizData.length - 1) ? quizItemId + 1 : undefined;
         if (quizItemId === null) {

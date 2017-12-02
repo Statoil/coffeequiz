@@ -5,7 +5,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const path = require("path");
 const logger = require("./logger");
-const mongo = require("./mongoDB");
+const mongo = require("./mongoAPI");
 const cors = require('cors');
 
 const port = process.env.PORT || 3000;
@@ -28,6 +28,11 @@ app.post('/api/response', (req, res) => {
   logger.info("quiz response: ", quizResponse);
   mongo.saveQuizResponse(quizResponse);
   res.send({});
+});
+
+app.get('/api/quizdata', (req, res) => {
+  mongo.getQuizData()
+    .then(quizData => res.send(quizData));
 });
 
 mongo.connect()

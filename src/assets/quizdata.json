@@ -1,165 +1,165 @@
 [
   {
-    "id": 0,
+    "_id": 0,
     "question": "Which of these Statoil-countries exports the most coffee on a yearly basis? (i.e we can have a little Subsidiary in that country called Statcaff or CoffOil)",
     "image": "q01b.png",
     "alternatives": ["Colombia", "Brazil", "Indonesia"],
     "answer": 1,
-    "startTime": "2017-12-01T12:37:00"
+    "startTime": "2017-12-02T12:00:00"
   },
   {
-    "id": 1,
+    "_id": 1,
     "question": "What is the current best guess of the subduction rate in the area where Statoil holds acreage in New Zealand since start of Miocene, i.e last 20 million years?",
     "image": "q02.png",
     "alternatives": ["50 cm / 1 year", "5 cm / 1 year", "5 cm / 1000 year"],
     "answer": 1,
-    "startTime": "2017-12-01T12:37:05"
+    "startTime": "2017-12-02T12:30:00"
   },
   {
-    "id": 2,
+    "_id": 2,
     "question": "Which is the most successful type of stratigraphical trap according to GCQ and the inhouse statistics over the last years?",
     "image": "q03.png",
-    "alternatives": ["Distal front lap", "Side lap", "Proximal updip pinch-out"],
+    "alternatives": ["Distal front lap", "S_ide lap", "Proximal updip pinch-out"],
     "answer": 1,
-    "startTime": "2017-12-01T12:37:10"
+    "startTime": "2017-12-02T13:00:00"
   },
   {
-    "id": 3,
+    "_id": 3,
     "question": "The Pre Salt play is hot in Basil these days, but what is the age of the salt?",
     "image": "q04.png",
     "alternatives": ["Selandian", "Albian", "Norian"],
     "answer": 1,
-    "startTime": "2017-12-01T12:37:15"
+    "startTime": "2017-12-02T13:30:00"
   },
   {
-    "id": 4,
+    "_id": 4,
     "question": "How can you tell that this person is a geologist?",
     "image": "q05.png",
     "alternatives": ["He is licking a rock", "He has a rock proof glasses", "He finds the rock more interesting than the opposite sex"],
     "answer": 0,
-    "startTime": "2017-12-01T12:37:20"
+    "startTime": "2017-12-02T14:00:00"
   },
   {
-    "id": 5,
+    "_id": 5,
     "question": "What is the name of the new amazing mega wow wow yeah yeah super duper collaboration software that we have?",
     "image": "q06.png",
     "alternatives": ["Bluemoon", "Bluescape", "Blueoyster"],
     "answer": 1,
-    "startTime": "2017-12-01T12:37:25"
+    "startTime": "2017-12-02T14:30:00"
   },
   {
-    "id": 6,
+    "_id": 6,
     "question": "What hydrocarbon type was expected to be found the AD-10  Block in Myanmar?",
     "image": "q07.png",
     "alternatives": ["Thermogenic gas", "Biogenic gas", "Oil"],
     "answer": 1,
-    "startTime": "2017-12-01T12:37:30"
+    "startTime": "2017-12-02T15:00:00"
   },
   {
-    "id": 7,
+    "_id": 7,
     "question": "What was the outcome of the pre salt round in Brazil that was just finished?",
     "image": "q08.png",
-    "alternatives": ["Statoil representative went to the wc and missed the 10 minute bidding",
-      "Statoil emptied it’s pockets and made a successful bid",
+    "alternatives": ["Statoil representative went to the wc and missed the 10 minute b_idding",
+      "Statoil emptied it’s pockets and made a successful b_id",
       "Statoil tried it’s best but failed miserably"],
     "answer": 1,
-    "startTime": "2017-12-01T12:37:35"
+    "startTime": "2017-12-02T15:30:00"
   },
   {
-    "id": 8,
+    "_id": 8,
     "question": "How many tcf’s of gas has been discovered in Area 1 & 4 held by Anadarco, Eni and others off shore Mozambique?",
     "image": "q09.png",
     "alternatives": ["18 Tcf", "108 Tcf", "1080 Tcf"],
     "answer": 0,
-    "startTime": "2017-12-01T12:37:40"
+    "startTime": "2017-12-02T16:00:00"
   },
   {
-    "id": 9,
+    "_id": 9,
     "question": "What mineral are bananas generally thought to be a good source for? (although not necessarily true)",
     "image": "q10.png",
     "alternatives": ["Calcium", "Potassium", "Magnesium"],
     "answer": 1,
-    "startTime": "2017-12-01T12:37:45"
+    "startTime": "2017-12-02T16:30:00"
   },
   {
-    "id": 10,
+    "_id": 10,
     "question": "What is the name of the Basin in India where Statoil was partner in a licence that made a big discovery, until about 2010-ish?",
     "image": "q11.png",
     "alternatives": ["Mannar Basin", "Konkan Kerala Basin", "Krishna Godavari Basin"],
     "answer": 2,
-    "startTime": "2017-12-01T12:37:50"
+    "startTime": "2017-12-02T17:00:00"
   },
   {
-    "id": 11,
+    "_id": 11,
     "question": "Indonesia is a huge country comprising over 13 000 islands and many basins onshore and offshore. How many basins has a proven petroleum system in Indonesia?",
     "image": "q12.png",
     "alternatives": ["23", "33", "53"],
     "answer": 0,
-    "startTime": "2017-12-01T12:37:55"
+    "startTime": "2017-12-02T17:30:00"
   },
   {
-    "id": 12,
+    "_id": 12,
     "question": "What peculiar geological feature can be seen in the shallower part on this 3D broadband seismic line?",
     "image": "q13.png",
     "alternatives": ["Hydrothermal Vents", "Basalt flow", "Remobilised Ooze"],
     "answer": 2,
-    "startTime": "2017-12-01T12:38:00"
+    "startTime": "2017-12-02T18:00:00"
   },
   {
-    "id": 13,
+    "_id": 13,
     "question": "How many deep water (>500 m wd) exploration wells have been drilled in the Ceduna Basin?",
     "image": "q14.png",
     "alternatives": ["<5", "5-10", "10-20"],
     "answer": 0,
-    "startTime": "2017-12-01T12:38:05"
+    "startTime": "2017-12-02T18:30:00"
   },
   {
-    "id": 14,
+    "_id": 14,
     "question": "Which famous geological site is this picture from?",
     "image": "q15.png",
     "alternatives": ["Dorset, England", "Kilkee, Ireland", "Avaldsnes, west coast Norway close to Utsira"],
     "answer": 1,
-    "startTime": "2017-12-01T12:38:10"
+    "startTime": "2017-12-02T19:00:00"
   },
   {
-    "id": 15,
+    "_id": 15,
     "question": "How many kilometers is the strike slip offset along the Sea Gap fault in Block 2 Tanzania in Saffron time?",
     "image": "q16.png",
     "alternatives": ["7 km", "70 km", "700 km"],
     "answer": 0,
-    "startTime": "2017-12-01T12:38:15"
+    "startTime": "2017-12-02T19:30:00"
   },
   {
-    "id": 16,
+    "_id": 16,
     "question": "What is the HC column height in the Pao discovery?",
     "image": "q17.png",
     "alternatives": ["200 m", "700 m", "1400 m"],
     "answer": 1,
-    "startTime": "2017-12-01T12:38:20"
+    "startTime": "2017-12-02T20:00:00"
   },
   {
-    "id": 17,
+    "_id": 17,
     "question": "What is this very common diagram called that is used to differentiate between different source rock types?",
     "image": "q18b.png",
     "alternatives": ["Van Koevarden diagram", "Van Halen diagram", "Van Krevelen diagram"],
     "answer": 2,
-    "startTime": "2017-12-01T12:38:25"
+    "startTime": "2017-12-02T20:30:00"
   },
   {
-    "id": 18,
+    "_id": 18,
     "question": "Which one of these wells is not a discovery in Block 2 Tanzania?",
     "image": "q19.png",
     "alternatives": ["Well A", "Well B", "Well C"],
     "answer": 1,
-    "startTime": "2017-12-01T12:38:30"
+    "startTime": "2017-12-02T21:00:00"
   },
   {
-    "id": 19,
+    "_id": 19,
     "question": "How many exploration wells have Statoil drilled this year until now and what is the success rate in %? Uncommercial discoveries not counted as success",
     "image": "q20.png",
     "alternatives": ["26 wells 46%", "30 wells 30%", "35 wells 20%"],
     "answer": 0,
-    "startTime": "2017-12-01T12:38:35"
+    "startTime": "2017-12-02T21:30:00"
   }
 ]
 

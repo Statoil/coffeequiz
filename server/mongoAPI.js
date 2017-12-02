@@ -23,9 +23,14 @@ function saveQuizResponse(quizResponse) {
   });
 }
 
+function getQuizData() {
+  return db.collection('quizData').find().toArray();
+}
+
 const mongoAPI = {
   connect: connect,
-  saveQuizResponse: saveQuizResponse
+  saveQuizResponse: saveQuizResponse,
+  getQuizData: getQuizData
 };
 
 module.exports = mongoAPI;

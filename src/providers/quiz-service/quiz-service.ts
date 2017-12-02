@@ -23,14 +23,26 @@ export class QuizServiceProvider {
       );
   }
 
-  getQuizData() {
-    return this.http.get<any[]>("assets/quizdata.json")
-      .map(data => data.map(item => new QuizItem(item.id,
-            item.question,
-            "assets/imgs/quiz/" + item.image,
-            item.alternatives,
-            item.answer,
-            new Date(item.startTime))));
+  getQuizData():Promise<QuizItem[]> {
+    const url = this.apiBase + '/api/quizdata';
+    const localFallback = '/assets/quizdata.json';
+    return this.http.get<any[]>(url)
+      .toPromise()
+      .catch(() => {
+        console.log(`Could not access remote url: ${url}. Using local fallback: ${localFallback}`);
+        return this.http.get<any[]>(localFallback).toPromise();
+      })
+      .then(this.mapData)
+      .catch(error => console.error("Error getting quizdata: " + error));
+  }
+
+  mapData(data) {
+    return data.map(item => new QuizItem(item.id,
+      item.question,
+      "assets/imgs/quiz/" + item.image,
+      item.alternatives,
+      item.answer,
+      new Date(item.startTime)))
   }
 
 }
