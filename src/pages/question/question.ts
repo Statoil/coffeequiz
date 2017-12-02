@@ -15,7 +15,7 @@ export class QuestionPage {
   prevQuizItemId: number;
   browseMode: boolean;
   intervalId: any;
-  envName: string = ENV.mode;
+  mode: string = ENV.mode;
 
   goToPage(pageId: number) {
     this.navCtrl.setRoot(QuestionPage, {'quizItemId': pageId});
@@ -39,7 +39,6 @@ export class QuestionPage {
   static selectQuizItemByDate(quizData: QuizItem[]): QuizItem {
     const possibleIndex = _.sortedIndex(quizData.map(quizItem => quizItem.startTime), new Date()) - 1;
     let index = Math.max(0, possibleIndex);
-    console.log("selected index: " + index);
     return quizData[index];
   }
 

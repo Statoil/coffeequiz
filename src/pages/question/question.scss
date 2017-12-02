@@ -19,4 +19,11 @@ page-question {
     padding: 0;
     height: 100%;
   }
+
+  div.environment-label {
+    position: absolute;
+    top:0;
+    left:0;
+    color: color($colors, light);
+  }
 }
