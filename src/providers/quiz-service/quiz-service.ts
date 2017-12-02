@@ -25,7 +25,7 @@ export class QuizServiceProvider {
 
   getQuizData():Promise<QuizItem[]> {
     const url = this.apiBase + '/api/quizdata';
-    const localFallback = '/assets/quizdata.json';
+    const localFallback = 'assets/quizdata.json';
     return this.http.get<any[]>(url)
       .toPromise()
       .catch(() => {
@@ -33,7 +33,7 @@ export class QuizServiceProvider {
         return this.http.get<any[]>(localFallback).toPromise();
       })
       .then(this.mapData)
-      .catch(error => console.error("Error getting quizdata: " + error));
+      .catch(error => console.error("Error getting quizdata: " + error.message));
   }
 
   mapData(data) {
