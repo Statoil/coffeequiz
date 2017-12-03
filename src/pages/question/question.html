@@ -6,7 +6,7 @@
     <ion-row style="flex: 1">
       <ion-col col-1><ion-icon class="nav-icon" name="arrow-dropleft-circle" (click)="goToPage(prevQuizItemId)" color="light"
                                *ngIf="(prevQuizItemId !== undefined) && browseMode"></ion-icon></ion-col>
-      <ion-col text-center padding><img [src]="quizItem.imageSrc" style="max-height:100%; width: auto;"/></ion-col>
+      <ion-col col-10> <div [style.background-image]="quizItem.imageSrc" class="image-view"></div></ion-col>
       <ion-col col-1 text-right><ion-icon class="nav-icon" name="arrow-dropright-circle" (click)="goToPage(nextQuizItemId)" color="light"
                                *ngIf="nextQuizItemId && browseMode"></ion-icon></ion-col>
     </ion-row>

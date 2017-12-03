@@ -4,13 +4,14 @@ import { QuizResponse } from "../../app/quizresponse";
 import { QuizItem } from "../../app/quizitem";
 import "rxjs/add/operator/map";
 import { ENV } from '@app/env';
+import { DomSanitizer } from "@angular/platform-browser";
 
 
 @Injectable()
 export class QuizServiceProvider {
   apiBase: string = ENV.apiBase;
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, private sanitizer: DomSanitizer) {
   }
 
   saveResponse(quizResponse: QuizResponse):void {
@@ -32,14 +33,14 @@ export class QuizServiceProvider {
         console.log(`Could not access remote url: ${url}. Using local fallback: ${localFallback}`);
         return this.http.get<any[]>(localFallback).toPromise();
       })
-      .then(this.mapData)
+      .then((data) => this.mapData(data))
       .catch(error => console.error("Error getting quizdata: " + error.message));
   }
 
   mapData(data) {
     return data.map(item => new QuizItem(item.id,
       item.question,
-      "assets/imgs/quiz/" + item.image,
+      this.sanitizer.bypassSecurityTrustStyle("url('assets/imgs/quiz/" + item.image + "')"),
       item.alternatives,
       item.answer,
       new Date(item.startTime)))

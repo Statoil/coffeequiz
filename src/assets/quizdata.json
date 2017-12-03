@@ -140,7 +140,7 @@
   {
     "_id": 17,
     "question": "What is this very common diagram called that is used to differentiate between different source rock types?",
-    "image": "q18b.png",
+    "image": "q18.png",
     "alternatives": ["Van Koevarden diagram", "Van Halen diagram", "Van Krevelen diagram"],
     "answer": 2,
     "startTime": "2017-12-02T20:30:00+01:00"

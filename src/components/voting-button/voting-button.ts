@@ -18,7 +18,6 @@ export class VotingButtonComponent {
   @Input() answerIndex: number;
 
   private animator: AnimationBuilder;
-  text: string;
   mode: string = ENV.mode;
 
   buttonClick() {
@@ -43,11 +42,6 @@ export class VotingButtonComponent {
               public modalCtrl: ModalController, private quizService: QuizServiceProvider, private platform: Platform) {
     this.animator = animationService.builder();
     this.elementRef = elementRef;
-  }
-
-  // noinspection JSUnusedGlobalSymbols
-  ngOnInit() {
-    this.text = this.quizItem.getAnswer(this.answerIndex);
   }
 
 }

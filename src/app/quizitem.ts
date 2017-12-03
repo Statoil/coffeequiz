@@ -1,6 +1,8 @@
+import {SafeUrl} from "@angular/platform-browser";
+
 export class QuizItem {
   truth: string;
-  constructor(public id: number, public question: string, public imageSrc: string, public alternatives: string[], public truthIndex: number, public startTime: Date) {
+  constructor(public id: number, public question: string, public imageSrc: SafeUrl, public alternatives: string[], public truthIndex: number, public startTime: Date) {
     this.truth = this.alternatives[this.truthIndex];
   }
 
