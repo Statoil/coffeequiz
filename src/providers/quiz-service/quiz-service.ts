@@ -10,6 +10,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 @Injectable()
 export class QuizServiceProvider {
   apiBase: string = ENV.apiBase;
+  isUsingLocalFallback: boolean = false;
 
   constructor(public http: HttpClient, private sanitizer: DomSanitizer) {
   }
@@ -31,6 +32,7 @@ export class QuizServiceProvider {
       .toPromise()
       .catch(() => {
         console.log(`Could not access remote url: ${url}. Using local fallback: ${localFallback}`);
+        this.isUsingLocalFallback = true;
         return this.http.get<any[]>(localFallback).toPromise();
       })
       .then((data) => this.mapData(data))
@@ -38,9 +40,10 @@ export class QuizServiceProvider {
   }
 
   mapData(data) {
+    const imageUrlBase = this.isUsingLocalFallback ? "" : this.apiBase + "/";
     return data.map(item => new QuizItem(item.id,
       item.question,
-      this.sanitizer.bypassSecurityTrustStyle("url('assets/imgs/quiz/" + item.image + "')"),
+      this.sanitizer.bypassSecurityTrustStyle(`url('${imageUrlBase}assets/imgs/quiz/${item.image}')`),
       item.alternatives,
       item.answer,
       new Date(item.startTime)))
