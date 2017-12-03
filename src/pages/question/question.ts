@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { QuizItem } from "../../app/quizitem";
-import { NavParams, NavController } from "ionic-angular";
+import { NavParams, } from "ionic-angular";
 import * as _ from "lodash";
 import { QuizServiceProvider } from "../../providers/quiz-service/quiz-service";
 import { ENV } from '@app/env';
@@ -11,41 +11,51 @@ import { ENV } from '@app/env';
 })
 export class QuestionPage {
   quizItem: QuizItem;
+  quizData: QuizItem[];
+  quizItemIndex: number;
   nextQuizItemId: number;
   prevQuizItemId: number;
   browseMode: boolean;
   intervalId: any;
   mode: string = ENV.mode;
 
-  goToPage(pageId: number) {
-    this.navCtrl.setRoot(QuestionPage, {'quizItemId': pageId});
+  goToPage(quizItemId: number) {
+    this.quizItemIndex = Math.max(0, Math.min(quizItemId, this.quizData.length));
+    this.quizItem = this.quizData[this.quizItemIndex];
+    this.updateNavIndexes();
   }
 
-  constructor(private navParams: NavParams, private navCtrl: NavController, private quizService: QuizServiceProvider) {
-    this.browseMode = _.isInteger(_.toNumber(this.navParams.get('quizItemId')));
-    const quizItemId =  this.browseMode ?  _.toNumber(this.navParams.get('quizItemId')) : null;
+  constructor(private navParams: NavParams, private quizService: QuizServiceProvider) {
+    this.browseMode = this.navParams.get('browseMode') === "true";
+    this.loadData();
+  }
+
+  loadData(): void {
     this.quizService.getQuizData()
       .then(quizData => {
-        this.prevQuizItemId = quizItemId > 0 ? quizItemId - 1 : undefined;
-        this.nextQuizItemId = quizItemId < (quizData.length - 1) ? quizItemId + 1 : undefined;
-        if (quizItemId === null) {
-          this.quizItem = QuestionPage.selectQuizItemByDate(quizData);
-        } else {
-          this.quizItem = quizData[quizItemId];
+        this.quizData = quizData;
+        this.quizItemIndex = QuestionPage.findQuizItemIndexByDate(quizData);
+        this.quizItem = this.quizData[this.quizItemIndex];
+        if (this.browseMode) {
+          this.updateNavIndexes();
         }
       });
   }
 
-  static selectQuizItemByDate(quizData: QuizItem[]): QuizItem {
+  updateNavIndexes(): void {
+    this.prevQuizItemId = this.quizItemIndex > 0 ? this.quizItemIndex - 1 : undefined;
+    this.nextQuizItemId = this.quizItemIndex < (this.quizData.length - 1) ? this.quizItemIndex + 1 : undefined;
+  }
+
+  static findQuizItemIndexByDate(quizData: QuizItem[]): number {
     const possibleIndex = _.sortedIndex(quizData.map(quizItem => quizItem.startTime), new Date()) - 1;
-    let index = Math.max(0, possibleIndex);
-    return quizData[index];
+    return Math.max(0, possibleIndex);
   }
 
   // noinspection JSUnusedGlobalSymbols
   ngOnInit() {
     if (!this.browseMode) {
-      this.intervalId = setInterval(() => this.navCtrl.setRoot(QuestionPage), 60000);
+      this.intervalId = setInterval(() => this.loadData(), 60000);
     }
   }
 

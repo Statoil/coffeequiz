@@ -24,7 +24,7 @@ import { QuizServiceProvider } from '../providers/quiz-service/quiz-service';
     BrowserModule,
     IonicModule.forRoot(MyApp, {}, {
       links: [
-        { component: QuestionPage, name: 'Question', segment: 'question/:quizItemId' }
+        { component: QuestionPage, name: 'Question', segment: 'browse/:browseMode' }
       ]
     }),
     HttpClientModule
