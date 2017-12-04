@@ -15,12 +15,14 @@
     <ion-row>
       <ion-col col-1></ion-col>
       <ion-col col-10 *ngIf="isCorrect" class="result" text-center>
+        <br>
         {{answer}}
         <br>
         <br>
         is correct!
       </ion-col>
       <ion-col col-10 *ngIf="!isCorrect" class="result" text-center>
+        <br>
         The correct answer is
         <br>
         <br>

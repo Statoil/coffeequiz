@@ -5,6 +5,7 @@ import { QuizItem } from "../../app/quizitem";
 import "rxjs/add/operator/map";
 import { ENV } from '@app/env';
 import { DomSanitizer } from "@angular/platform-browser";
+import * as _ from "lodash";
 
 
 @Injectable()
@@ -35,22 +36,25 @@ export class QuizServiceProvider {
         this.isUsingLocalFallback = true;
         return this.http.get<any[]>(localFallback).toPromise();
       })
-      .then((data) => this.mapData(data))
-      .catch(error => console.error("Error getting quizdata: " + error.message));
+      .then((data: any[]) => this.mapData(data))
+      .catch(error => {
+        console.error("Error getting quizdata: " + error.message);
+        return [];
+      });
   }
 
-  mapData(data) {
+  mapData(data: any[]): QuizItem[] {
     const imageUrlBase = this.isUsingLocalFallback ? "../" : this.apiBase + "/";
-    return data.map(item => {
+    const quizData = data.map(item => {
       const cssImageUrl = `url('${imageUrlBase}assets/imgs/quiz/${item.image}')`;
-      console.log("image url: " + cssImageUrl);
       return new QuizItem(item.id,
         item.question,
         this.sanitizer.bypassSecurityTrustStyle(cssImageUrl),
         item.alternatives,
         item.answer,
         new Date(item.startTime));
-      })
+      });
+      return _.sortBy(quizData, quizItem => quizItem.startTime);
   }
 
 }
