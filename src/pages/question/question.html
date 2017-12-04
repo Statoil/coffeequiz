@@ -4,13 +4,9 @@
       <ion-col text-center class="question">{{quizItem.question}}</ion-col>
     </ion-row>
     <ion-row style="flex: 1">
-      <ion-col col-1 class="nav-col"><ion-icon class="nav-icon" name="arrow-dropleft-circle" (click)="goToPage(prevQuizItemId)" color="light"
-                               *ngIf="(prevQuizItemId !== undefined) && browseMode"></ion-icon></ion-col>
+      <ion-col col-1></ion-col>
       <ion-col col-10> <div [style.background-image]="quizItem.imageSrc" class="image-view"></div></ion-col>
-      <ion-col col-1 text-right class="nav-col" style="justify-content: flex-end">
-        <p class="time-field">{{quizItem.startTime | date:'mediumDate'}}</p>
-        <ion-icon class="nav-icon" name="arrow-dropright-circle" (click)="goToPage(nextQuizItemId)" color="light" *ngIf="nextQuizItemId && browseMode"></ion-icon>
-      </ion-col>
+      <ion-col col-1 text-right><p *ngIf="browseMode" class="time-field">{{quizItem.startTime | date:'mediumDate'}}</p></ion-col>
     </ion-row>
 
     <ion-row>
@@ -28,3 +24,5 @@
 
 </ion-content>
 <div class="environment-label" *ngIf="mode === 'dev'">{{mode}}</div>
+<ion-icon class="nav-icon" style="left: 40px" name="arrow-dropleft-circle" (click)="goToPage(prevQuizItemId)" color="light" *ngIf="(prevQuizItemId !== undefined) && browseMode"></ion-icon>
+<ion-icon class="nav-icon" style="right: 40px" name="arrow-dropright-circle" (click)="goToPage(nextQuizItemId)" color="light" *ngIf="nextQuizItemId && browseMode"></ion-icon>

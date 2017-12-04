@@ -9,6 +9,9 @@ page-question {
   .nav-icon {
     font-size: 3vw;
     cursor: pointer;
+    position: fixed;
+    top: 45%;
+    z-index: 1;
   }
 
   scroll-content {
@@ -31,8 +34,6 @@ page-question {
   .time-field {
     font-size: 1vw;
     font-family: 'Statoil Display Medium', "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Lucida, sans-serif;
-    position: absolute;
-    top: 0;
   }
 
   .image-view {
@@ -43,8 +44,4 @@ page-question {
     height: 100%;
   }
 
-  .nav-col {
-    display:inline-flex;
-    align-items: center;
-  }
 }
