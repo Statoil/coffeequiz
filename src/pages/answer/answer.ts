@@ -11,7 +11,7 @@ export class AnswerPage {
   answer: string;
   truth: string;
   isCorrect: boolean;
-  seconds: number = 3;
+  seconds: number = 4;
   messageHtml: string;
 
   countDown: number = setInterval(() => {

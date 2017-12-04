@@ -59,8 +59,8 @@
     "_id": 7,
     "question": "What was the outcome of the pre salt round in Brazil that was just finished?",
     "image": "q08.png",
-    "alternatives": ["Statoil representative went to the wc and missed the 10 minute b_idding",
-      "Statoil emptied it’s pockets and made a successful b_id",
+    "alternatives": ["Statoil representative went to the wc and missed the 10 minute bidding",
+      "Statoil emptied it’s pockets and made a successful bid",
       "Statoil tried it’s best but failed miserably"],
     "answer": 1,
     "startTime": "2017-12-20T00:00:00+01:00"
