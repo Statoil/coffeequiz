@@ -47,7 +47,7 @@ export class QuizServiceProvider {
     const imageUrlBase = this.isUsingLocalFallback ? "" : this.apiBase + "/";
     const quizData = data.map(item => {
       const cssImageUrl = `url('${imageUrlBase}assets/imgs/quiz/${item.image}')`;
-      return new QuizItem(item.id,
+      return new QuizItem(item._id,
         item.question,
         this.sanitizer.bypassSecurityTrustStyle(cssImageUrl),
         item.alternatives,
