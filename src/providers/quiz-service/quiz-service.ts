@@ -40,13 +40,17 @@ export class QuizServiceProvider {
   }
 
   mapData(data) {
-    const imageUrlBase = this.isUsingLocalFallback ? "" : this.apiBase + "/";
-    return data.map(item => new QuizItem(item.id,
-      item.question,
-      this.sanitizer.bypassSecurityTrustStyle(`url('${imageUrlBase}assets/imgs/quiz/${item.image}')`),
-      item.alternatives,
-      item.answer,
-      new Date(item.startTime)))
+    const imageUrlBase = this.isUsingLocalFallback ? "../" : this.apiBase + "/";
+    return data.map(item => {
+      const cssImageUrl = `url('${imageUrlBase}assets/imgs/quiz/${item.image}')`;
+      console.log("image url: " + cssImageUrl);
+      return new QuizItem(item.id,
+        item.question,
+        this.sanitizer.bypassSecurityTrustStyle(cssImageUrl),
+        item.alternatives,
+        item.answer,
+        new Date(item.startTime));
+      })
   }
 
 }
