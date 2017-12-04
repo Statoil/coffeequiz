@@ -1,5 +1,5 @@
 // noinspection JSUnusedGlobalSymbols
 export const ENV = {
   mode: "dev",
-  apiBase: ''
+  apiBase: 'http://192.168.2.50:3000'
 };

@@ -33,6 +33,9 @@ export class QuestionPage {
   loadData(): void {
     this.quizService.getQuizData()
       .then(quizData => {
+        if (!quizData || quizData.length === 0) {
+          return;
+        }
         this.quizData = quizData;
         this.quizItemIndex = QuestionPage.findQuizItemIndexByDate(quizData);
         this.quizItem = this.quizData[this.quizItemIndex];
@@ -55,7 +58,7 @@ export class QuestionPage {
   // noinspection JSUnusedGlobalSymbols
   ngOnInit() {
     if (!this.browseMode) {
-      this.intervalId = setInterval(() => this.loadData(), 60000);
+      this.intervalId = setInterval(() => this.loadData(), 120 * 1000);
     }
   }
 

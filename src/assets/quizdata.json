@@ -19,7 +19,7 @@
     "_id": 2,
     "question": "Which is the most successful type of stratigraphical trap according to GCQ and the inhouse statistics over the last years?",
     "image": "q03.png",
-    "alternatives": ["Distal front lap", "S_ide lap", "Proximal updip pinch-out"],
+    "alternatives": ["Distal front lap", "Side lap", "Proximal updip pinch-out"],
     "answer": 1,
     "startTime": "2017-12-13T00:00:00+01:00"
   },
@@ -41,7 +41,7 @@
   },
   {
     "_id": 5,
-    "question": "What is the name of the new amazing mega wow wow yeah yeah super duper collaboration software that we have?",
+    "question": "What is the name of the new amazing mega wow wow yeah yeah super duper collaboration software that we will have?",
     "image": "q06.png",
     "alternatives": ["Bluemoon", "Bluescape", "Blueoyster"],
     "answer": 1,
@@ -70,7 +70,7 @@
     "question": "How many tcf’s of gas has been discovered in Area 1 & 4 held by Anadarco, Eni and others off shore Mozambique?",
     "image": "q09.png",
     "alternatives": ["18 Tcf", "108 Tcf", "1080 Tcf"],
-    "answer": 0,
+    "answer": 1,
     "startTime": "2017-12-21T00:00:00+01:00"
   },
   {
