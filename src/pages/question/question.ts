@@ -18,6 +18,7 @@ export class QuestionPage {
   browseMode: boolean;
   intervalId: any;
   mode: string = ENV.mode;
+  pollInterval: number = 120;
 
   goToPage(quizItemId: number) {
     this.quizItemIndex = Math.max(0, Math.min(quizItemId, this.quizData.length));
@@ -58,7 +59,11 @@ export class QuestionPage {
   // noinspection JSUnusedGlobalSymbols
   ngOnInit() {
     if (!this.browseMode) {
-      this.intervalId = setInterval(() => this.loadData(), 120 * 1000);
+      console.log(`Server poll interval: ${this.pollInterval} seconds`);
+      this.intervalId = setInterval(() => this.loadData(), this.pollInterval * 1000);
+    }
+    else {
+      console.log("Browse mode. Not polling server.");
     }
   }
 
