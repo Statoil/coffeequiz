@@ -1,27 +1,31 @@
 <ion-content padding *ngIf="quizItem">
-  <ion-grid>
-    <ion-row>
-      <ion-col text-center class="question">{{quizItem.question}}</ion-col>
-    </ion-row>
-    <ion-row style="flex: 1">
-      <ion-col style="padding: 30px"> <div [style.background-image]="quizItem.imageSrc" class="image-view"></div></ion-col>
-    </ion-row>
+    <ion-grid>
+        <ion-row>
+            <ion-col text-center class="question">{{quizItem.question}}</ion-col>
+        </ion-row>
+        <ion-row style="flex: 1">
+            <ion-col style="padding: 30px">
+                <div [style.background-image]="quizItem.imageSrc" class="image-view"></div>
+            </ion-col>
+        </ion-row>
 
-    <ion-row>
-      <ion-col col-4 text-center>
-        <voting-button [quizItem]="quizItem" [answerIndex]="0"></voting-button>
-      </ion-col>
-      <ion-col col-4 text-center>
-        <voting-button [quizItem]="quizItem" [answerIndex]="1"></voting-button>
-      </ion-col>
-      <ion-col col-4 text-center>
-        <voting-button [quizItem]="quizItem" [answerIndex]="2"></voting-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+        <ion-row>
+            <ion-col col-4 text-center>
+                <voting-button [quizItem]="quizItem" [answerIndex]="0"></voting-button>
+            </ion-col>
+            <ion-col col-4 text-center>
+                <voting-button [quizItem]="quizItem" [answerIndex]="1"></voting-button>
+            </ion-col>
+            <ion-col col-4 text-center>
+                <voting-button [quizItem]="quizItem" [answerIndex]="2"></voting-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 
 </ion-content>
 <div class="environment-label" *ngIf="mode === 'dev'">{{mode}}</div>
-<ion-icon class="nav-icon" style="left: 20px" name="arrow-dropleft-circle" (click)="goToPage(prevQuizItemId)" color="light" *ngIf="(prevQuizItemId !== undefined) && browseMode"></ion-icon>
-<ion-icon class="nav-icon" style="right: 20px" name="arrow-dropright-circle" (click)="goToPage(nextQuizItemId)" color="light" *ngIf="nextQuizItemId && browseMode"></ion-icon>
+<ion-icon class="nav-icon" style="left: 20px" name="arrow-dropleft-circle" (click)="goToPage(prevQuizItemId)"
+          color="light" *ngIf="(prevQuizItemId !== undefined) && browseMode"></ion-icon>
+<ion-icon class="nav-icon" style="right: 20px" name="arrow-dropright-circle" (click)="goToPage(nextQuizItemId)"
+          color="light" *ngIf="nextQuizItemId && browseMode"></ion-icon>
 <p *ngIf="quizItem && browseMode" class="time-field">{{quizItem.startTime | date:'mediumDate'}}</p>

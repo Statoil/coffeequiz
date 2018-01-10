@@ -1,20 +1,21 @@
 import {SafeUrl} from "@angular/platform-browser";
 
 export class QuizItem {
-  truth: string;
-  constructor(public id: number, public question: string, public imageSrc: SafeUrl, public alternatives: string[], public truthIndex: number, public startTime: Date) {
-    this.truth = this.alternatives[this.truthIndex];
-  }
+    truth: string;
 
-  getTruth(): string {
-    return this.alternatives[this.truthIndex];
-  }
+    constructor(public id: number, public question: string, public imageSrc: SafeUrl, public alternatives: string[], public truthIndex: number, public startTime: Date) {
+        this.truth = this.alternatives[this.truthIndex];
+    }
 
-  getAnswer(answerIndex: number) {
-    return this.alternatives[answerIndex];
-  }
+    getTruth(): string {
+        return this.alternatives[this.truthIndex];
+    }
 
-  isTrue(answerIndex: number) {
-    return this.truthIndex === answerIndex;
-  }
+    getAnswer(answerIndex: number) {
+        return this.alternatives[answerIndex];
+    }
+
+    isTrue(answerIndex: number) {
+        return this.truthIndex === answerIndex;
+    }
 }

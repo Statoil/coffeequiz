@@ -1,29 +1,29 @@
 
 .wrapper {
-  width: 90%;
-  position: relative;
-  padding-bottom: 30%;
-  display: inline-block;
+    width: 90%;
+    position: relative;
+    padding-bottom: 30%;
+    display: inline-block;
 }
-
 
 .voting-button {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0; bottom: 0; left: 0; right: 0;
-  font-size: 2vw;
-  font-family: "Statoil Display Medium", "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Lucida, sans-serif;;
-  font-weight: bold;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 2vw;
+    font-family: "Statoil Display Medium", "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Lucida, sans-serif;;
+    font-weight: bold;
 }
-
-
 
 /*.voting-button {
   min-height: 64px;
 }*/
 
 .wrap-text {
-  overflow: hidden;
-  text-overflow: ellipsis;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

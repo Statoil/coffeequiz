@@ -1,6 +1,6 @@
 export class QuizResponse {
-  // noinspection JSUnusedGlobalSymbols
-  constructor(public quizItemId: number, public answerIndex: number, public isTrue: boolean, public mode: string, public platform: string) {
+    // noinspection JSUnusedGlobalSymbols
+    constructor(public quizItemId: number, public answerIndex: number, public isTrue: boolean, public mode: string, public platform: string) {
 
-  }
+    }
 }
