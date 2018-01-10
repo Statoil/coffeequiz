@@ -12,18 +12,22 @@ import { AnimationService } from "css-animator";
 import { VotingButtonComponent } from "../components/voting-button/voting-button";
 import { HttpClientModule } from "@angular/common/http";
 import { QuizServiceProvider } from '../providers/quiz-service/quiz-service';
+import { SelectQuizPage } from "../pages/select-quiz/select-quiz";
+import { File } from "@ionic-native/file";
 
 @NgModule({
   declarations: [
     MyApp,
     QuestionPage,
     AnswerPage,
+    SelectQuizPage,
     VotingButtonComponent
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp, {}, {
       links: [
+        { component: SelectQuizPage, name: 'SelectQuiz', segment: 'select-quiz' },
         { component: QuestionPage, name: 'Question', segment: 'browse/:browseMode' }
       ]
     }),
@@ -33,14 +37,16 @@ import { QuizServiceProvider } from '../providers/quiz-service/quiz-service';
   entryComponents: [
     MyApp,
     QuestionPage,
-    AnswerPage
+    AnswerPage,
+    SelectQuizPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AnimationService,
-    QuizServiceProvider
+    QuizServiceProvider,
+    File
   ]
 })
 export class AppModule {}

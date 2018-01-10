@@ -6,6 +6,9 @@ import "rxjs/add/operator/map";
 import { ENV } from '@app/env';
 import { DomSanitizer } from "@angular/platform-browser";
 import * as _ from "lodash";
+import {Observable} from "rxjs/Observable";
+import {catchError} from "rxjs/operators";
+import {QuizMetadata} from "../../app/quizmetadata";
 
 
 @Injectable()
@@ -55,6 +58,28 @@ export class QuizServiceProvider {
         new Date(item.startTime));
       });
       return _.sortBy(quizData, quizItem => quizItem.startTime);
+  }
+
+
+  getQuizes(): Observable<QuizMetadata[]> {
+    return this.http.get<QuizMetadata[]>("http://localhost:3000/api/quizes")
+      .pipe(
+        catchError(error => {
+          console.error(error);
+          return []
+        })
+      )
+  }
+
+  getNewQuizData(quizId: string): Observable<QuizItem[]> {
+    const url = this.apiBase + '/api/app-quiz/' + quizId;
+    return this.http.get<any[]>(url)
+      .pipe(
+        catchError(error => {
+          console.error("Error getting quizdata: " + error.message);
+          return [];
+        })
+      )
   }
 
 }

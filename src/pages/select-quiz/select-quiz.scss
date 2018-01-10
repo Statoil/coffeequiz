@@ -1,0 +1,8 @@
+page-select-quiz {
+    h2, h3, p {
+        color: color($colors, light);
+    }
+    .dark {
+        background: color($colors, dark);
+    }
+}
