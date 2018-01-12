@@ -26,13 +26,14 @@ export class QuestionPage {
         this.updateNavIndexes();
     }
 
-    constructor(private navParams: NavParams, private quizService: QuizServiceProvider) {
-        //this.browseMode = this.navParams.get('browseMode') === "true";
-        this.browseMode = true;
-    }
+    constructor(
+        private navParams: NavParams,
+        private quizService: QuizServiceProvider)
+    {}
 
     loadData(): void {
         const quizMetadata = this.navParams.get('quizMetadata');
+        this.browseMode = this.navParams.get('browseMode');
         if (!quizMetadata) {
             return;
         }

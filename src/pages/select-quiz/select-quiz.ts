@@ -1,12 +1,11 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams, Platform} from 'ionic-angular';
+import {NavController, NavParams, Platform} from 'ionic-angular';
 import {QuizServiceProvider} from "../../providers/quiz-service/quiz-service";
 import {QuizMetadata} from "../../app/quizmetadata";
 import {File} from '@ionic-native/file';
 import {QuestionPage} from "../question/question";
 
 
-@IonicPage()
 @Component({
     selector: 'page-select-quiz',
     templateUrl: 'select-quiz.html',
@@ -16,12 +15,14 @@ export class SelectQuizPage {
     quizDirectory = "quizData";
     quizFileName = "quizFile.json";
     quizes: QuizMetadata[];
+    browseMode: boolean;
 
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
                 private quizService: QuizServiceProvider,
                 private file: File,
                 private platform: Platform) {
+        this.browseMode = this.navParams.get('browseMode') === "true";
     }
 
     ionViewDidLoad() {
@@ -37,7 +38,7 @@ export class SelectQuizPage {
             .subscribe(quizData => {
                 console.log(quizData);
                 this.downLoadQuiz(quizData)
-                    .then(() => this.navCtrl.push(QuestionPage, {quizMetadata: quizMetadata}))
+                    .then(() => this.navCtrl.push(QuestionPage, {quizMetadata: quizMetadata, browseMode: this.browseMode}))
             });
 
     }

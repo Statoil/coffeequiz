@@ -27,8 +27,7 @@ import {File} from "@ionic-native/file";
         BrowserModule,
         IonicModule.forRoot(MyApp, {}, {
             links: [
-                {component: SelectQuizPage, name: 'SelectQuiz', segment: 'select-quiz'},
-                {component: QuestionPage, name: 'Question', segment: 'browse/:browseMode'}
+                {component: SelectQuizPage, name: 'SelectQuiz', segment: 'browse/:browseMode'}
             ]
         }),
         HttpClientModule
