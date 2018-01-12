@@ -5,19 +5,19 @@
         </ion-row>
         <ion-row style="flex: 1">
             <ion-col style="padding: 30px">
-                <div [style.background-image]="quizItem.imageSrc" class="image-view"></div>
+                <div [style.background-image]="quizItem.imageUrl" class="image-view"></div>
             </ion-col>
         </ion-row>
 
         <ion-row>
             <ion-col col-4 text-center>
-                <voting-button [quizItem]="quizItem" [answerIndex]="0"></voting-button>
-            </ion-col>
-            <ion-col col-4 text-center>
                 <voting-button [quizItem]="quizItem" [answerIndex]="1"></voting-button>
             </ion-col>
             <ion-col col-4 text-center>
                 <voting-button [quizItem]="quizItem" [answerIndex]="2"></voting-button>
+            </ion-col>
+            <ion-col col-4 text-center>
+                <voting-button [quizItem]="quizItem" [answerIndex]="3"></voting-button>
             </ion-col>
         </ion-row>
     </ion-grid>

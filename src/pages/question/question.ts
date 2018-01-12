@@ -27,13 +27,17 @@ export class QuestionPage {
     }
 
     constructor(private navParams: NavParams, private quizService: QuizServiceProvider) {
-        this.browseMode = this.navParams.get('browseMode') === "true";
-        this.loadData();
+        //this.browseMode = this.navParams.get('browseMode') === "true";
+        this.browseMode = true;
     }
 
     loadData(): void {
-        this.quizService.getQuizData()
-            .then(quizData => {
+        const quizMetadata = this.navParams.get('quizMetadata');
+        if (!quizMetadata) {
+            return;
+        }
+        this.quizService.getQuiz(quizMetadata.id)
+            .subscribe(quizData => {
                 if (!quizData || quizData.length === 0) {
                     return;
                 }
@@ -65,6 +69,7 @@ export class QuestionPage {
         else {
             console.log("Browse mode. Not polling server.");
         }
+        this.loadData();
     }
 
     // noinspection JSUnusedGlobalSymbols

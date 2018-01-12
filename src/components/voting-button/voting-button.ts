@@ -28,8 +28,8 @@ export class VotingButtonComponent {
 
     processAnswer() {
         const modal = this.modalCtrl.create(AnswerPage, {
-            answer: this.quizItem.getAnswer(this.answerIndex),
-            truth: this.quizItem.getTruth()
+            answer: this.quizItem.getAnswerText(this.answerIndex),
+            truth: this.quizItem.getTruthText()
         });
         modal.present();
         const response = new QuizResponse(this.quizItem.id, this.answerIndex, this.quizItem.isTrue(this.answerIndex), this.mode, this.getPlatform());

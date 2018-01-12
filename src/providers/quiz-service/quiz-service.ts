@@ -5,9 +5,8 @@ import {QuizItem} from "../../app/quizitem";
 import "rxjs/add/operator/map";
 import {ENV} from '@app/env';
 import {DomSanitizer} from "@angular/platform-browser";
-import * as _ from "lodash";
 import {Observable} from "rxjs/Observable";
-import {catchError} from "rxjs/operators";
+import {catchError, map} from "rxjs/operators";
 import {QuizMetadata} from "../../app/quizmetadata";
 
 
@@ -30,35 +29,30 @@ export class QuizServiceProvider {
             );
     }
 
-    getQuizData(): Promise<QuizItem[]> {
-        const url = this.apiBase + '/api/quizdata';
-        const localFallback = 'assets/quizdata.json';
+
+    getQuiz(quizId: string): Observable<QuizItem[]> {
+        const url = `${this.apiBase}/api/app-quiz/${quizId}`;
         return this.http.get<any[]>(url)
-            .toPromise()
-            .catch(() => {
-                console.log(`Could not access remote url: ${url}. Using local fallback: ${localFallback}`);
-                this.isUsingLocalFallback = true;
-                return this.http.get<any[]>(localFallback).toPromise();
-            })
-            .then((data: any[]) => this.mapData(data))
-            .catch(error => {
-                console.error("Error getting quizdata: " + error.message);
-                return [];
-            });
+            .pipe(
+                map(data => this.mapData(data)),
+                catchError(error => {
+                    console.error("Error getting quiz: " + error.message);
+                    return [];
+                })
+            )
+
     }
 
-    mapData(data: any[]): QuizItem[] {
-        const imageUrlBase = this.isUsingLocalFallback ? "" : this.apiBase + "/";
-        const quizData = data.map(item => {
-            const cssImageUrl = `url('${imageUrlBase}assets/imgs/quiz/${item.image}')`;
-            return new QuizItem(item._id,
+
+    mapData(data: any): QuizItem[] {
+        return data.map(item => new QuizItem(item.quizItemId,
                 item.question,
-                this.sanitizer.bypassSecurityTrustStyle(cssImageUrl),
-                item.alternatives,
+                this.sanitizer.bypassSecurityTrustStyle(`url(${this.apiBase}/api/quiz/image/${item.imageId})`),
+                item.alternative1,
+                item.alternative2,
+                item.alternative3,
                 item.answer,
-                new Date(item.startTime));
-        });
-        return _.sortBy(quizData, quizItem => quizItem.startTime);
+                new Date(item.startTime)));
     }
 
 

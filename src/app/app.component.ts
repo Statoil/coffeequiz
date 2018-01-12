@@ -3,13 +3,13 @@ import {Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 
-import {QuestionPage} from "../pages/question/question";
+import {SelectQuizPage} from "../pages/select-quiz/select-quiz";
 
 @Component({
     templateUrl: 'app.html'
 })
 export class MyApp {
-    rootPage: any = QuestionPage;
+    rootPage: any = SelectQuizPage;
 
     constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
         platform.ready().then(() => {

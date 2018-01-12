@@ -1,21 +1,31 @@
 import {SafeUrl} from "@angular/platform-browser";
 
 export class QuizItem {
-    truth: string;
 
-    constructor(public id: number, public question: string, public imageSrc: SafeUrl, public alternatives: string[], public truthIndex: number, public startTime: Date) {
-        this.truth = this.alternatives[this.truthIndex];
+    constructor(
+        public id: number,
+        public question: string,
+        public imageUrl: SafeUrl,
+        public alternative1: string,
+        public alternative2: string,
+        public alternative3: string,
+        public answer: number,
+        public startTime: Date)
+    {
+        if (answer < 1 || answer > 3) {
+            throw new Error("Illegal value for answer: " + this.answer);
+        }
     }
 
-    getTruth(): string {
-        return this.alternatives[this.truthIndex];
+    getAnswerText(answerIndex) {
+        return this['alternative' + answerIndex];
     }
 
-    getAnswer(answerIndex: number) {
-        return this.alternatives[answerIndex];
+    getTruthText(): string {
+        return this['alternative' + this.answer];
     }
 
-    isTrue(answerIndex: number) {
-        return this.truthIndex === answerIndex;
+    isTrue(alternativeIndex: number) {
+        return this.answer === alternativeIndex;
     }
 }
