@@ -19,7 +19,7 @@ export class MyApp {
             statusBar.hide();
             setTimeout(function () {
                 splashScreen.hide();
-            }, 5000);
+            }, 500);
         });
     }
 }

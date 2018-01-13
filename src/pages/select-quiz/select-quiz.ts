@@ -4,6 +4,7 @@ import {QuizServiceProvider} from "../../providers/quiz-service/quiz-service";
 import {QuizMetadata} from "../../app/quizmetadata";
 import {File} from '@ionic-native/file';
 import {QuestionPage} from "../question/question";
+import {ENV} from '@app/env';
 
 
 @Component({
@@ -12,19 +13,22 @@ import {QuestionPage} from "../question/question";
 })
 export class SelectQuizPage {
 
-    quizDirectory = "quizData";
+    quizDirectoryName = "quizData";
     quizFileName = "quizFile.json";
     quizes: QuizMetadata[];
     browseMode: boolean;
+    mode: string = ENV.mode;
 
-    constructor(public navCtrl: NavController,
+        constructor(public navCtrl: NavController,
                 public navParams: NavParams,
                 private quizService: QuizServiceProvider,
                 private file: File,
                 private platform: Platform) {
+        console.log("Select quiz");
         this.browseMode = this.navParams.get('browseMode') === "true";
     }
 
+    // noinspection JSUnusedGlobalSymbols
     ionViewDidLoad() {
         console.log('loading select-quiz');
         this.quizService.getQuizes()
@@ -44,26 +48,32 @@ export class SelectQuizPage {
     }
 
     downLoadQuiz(quizData) {
-        if (this.isWeb()) {
+        if (!this.isIOSApp()) {
             return Promise.resolve();
         }
         return this.createQuizDir()
             .then(() => {
+                console.log("Creating file " + this.quizFileName);
                 this.file.createFile(this.file.dataDirectory, this.quizFileName, true)
                     .then(fileEntry => {
-                        fileEntry.createWriter(file => file.write(quizData), error => console.log(error))
+                        console.log("Writing data to file " + this.quizFileName);
+                        return fileEntry.createWriter(file => file.write(quizData), error => console.log(error));
                     })
             })
     }
 
     createQuizDir() {
-        return this.file.checkDir(this.file.dataDirectory, this.quizDirectory)
-            .then(_ => console.log('Directory exists'))
-            .catch(() => this.file.createDir(this.file.dataDirectory, this.quizDirectory, false));
+        console.log(`Checking if dir ${this.quizDirectoryName} exists`);
+        return this.file.checkDir(this.file.dataDirectory, this.quizDirectoryName)
+            .then(() => console.log('Directory exists'))
+            .catch(() => {
+                console.log(`Creating dir ${this.quizDirectoryName}`);
+                return this.file.createDir(this.file.dataDirectory, this.quizDirectoryName, false)
+            });
     }
 
-    isWeb(): boolean {
-        return !this.platform.is("ios");
+    isIOSApp(): boolean {
+        return this.platform.is("ios") && !this.platform.is("mobileweb");
     }
 
 }

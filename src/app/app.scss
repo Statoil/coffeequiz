@@ -20,3 +20,11 @@
     url(../assets/fonts/statoil_display_medium.woff?1505390547) format('woff'),
     url(../assets/fonts/statoil_display_medium.svg?1505390547) format('svg')
 }
+
+
+div.environment-label {
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: color($colors, light);
+}

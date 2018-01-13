@@ -13,7 +13,6 @@ import {QuizMetadata} from "../../app/quizmetadata";
 @Injectable()
 export class QuizServiceProvider {
     apiBase: string = ENV.apiBase;
-    isUsingLocalFallback: boolean = false;
 
     constructor(public http: HttpClient, private sanitizer: DomSanitizer) {
     }
@@ -57,7 +56,7 @@ export class QuizServiceProvider {
 
 
     getQuizes(): Observable<QuizMetadata[]> {
-        return this.http.get<QuizMetadata[]>("http://localhost:3000/api/quizes")
+        return this.http.get<QuizMetadata[]>(this.apiBase + "/api/quizes")
             .pipe(
                 catchError(error => {
                     console.error(error);

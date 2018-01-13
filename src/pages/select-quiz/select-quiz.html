@@ -1,8 +1,9 @@
-<ion-content padding *ngIf="quizes">
+<ion-content padding>
     <ion-grid>
         <ion-row>
             <ion-col text-center>
-                <ion-list>
+                <H1>Select quiz</H1>
+                <ion-list *ngIf="quizes">
                     <button ion-item *ngFor="let quiz of quizes" class="dark" (click)="selectQuiz(quiz)">
                         <h2>{{quiz.name}}</h2>
                         <h3>{{quiz.numberOfItems}} questions</h3>
@@ -15,3 +16,4 @@
     </ion-grid>
 
 </ion-content>
+<div class="environment-label" *ngIf="mode === 'dev'">{{mode}}</div>
