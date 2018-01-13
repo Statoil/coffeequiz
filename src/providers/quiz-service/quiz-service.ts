@@ -14,11 +14,13 @@ import {QuizMetadata} from "../../app/quizmetadata";
 export class QuizServiceProvider {
     apiBase: string = ENV.apiBase;
 
-    constructor(public http: HttpClient, private sanitizer: DomSanitizer) {
-    }
+    constructor(
+        public http: HttpClient,
+        private sanitizer: DomSanitizer)
+    {}
 
     saveResponse(quizResponse: QuizResponse): void {
-        const url = this.apiBase + '/api/response';
+        const url = this.apiBase + '/api/quiz-response';
         this.http
             .post(url, quizResponse)
             .subscribe(
@@ -27,7 +29,6 @@ export class QuizServiceProvider {
                 err => console.error(err.message)
             );
     }
-
 
     getQuiz(quizId: string): Observable<QuizItem[]> {
         const url = `${this.apiBase}/api/app-quiz/${quizId}`;
@@ -39,9 +40,7 @@ export class QuizServiceProvider {
                     return [];
                 })
             )
-
     }
-
 
     mapData(data: any): QuizItem[] {
         return data.map(item => new QuizItem(item.quizItemId,
@@ -54,24 +53,12 @@ export class QuizServiceProvider {
                 new Date(item.startTime)));
     }
 
-
     getQuizes(): Observable<QuizMetadata[]> {
         return this.http.get<QuizMetadata[]>(this.apiBase + "/api/quizes")
             .pipe(
                 catchError(error => {
                     console.error(error);
                     return []
-                })
-            )
-    }
-
-    getNewQuizData(quizId: string): Observable<QuizItem[]> {
-        const url = this.apiBase + '/api/app-quiz/' + quizId;
-        return this.http.get<any[]>(url)
-            .pipe(
-                catchError(error => {
-                    console.error("Error getting quizdata: " + error.message);
-                    return [];
                 })
             )
     }
