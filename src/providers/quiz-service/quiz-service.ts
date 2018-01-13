@@ -31,7 +31,7 @@ export class QuizServiceProvider {
     }
 
     getQuiz(quizId: string): Observable<QuizItem[]> {
-        const url = `${this.apiBase}/api/app-quiz/${quizId}`;
+        const url = `${this.apiBase}/api/quiz/app/${quizId}`;
         return this.http.get<any[]>(url)
             .pipe(
                 map(data => this.mapData(data)),
@@ -54,7 +54,7 @@ export class QuizServiceProvider {
     }
 
     getQuizes(): Observable<QuizMetadata[]> {
-        return this.http.get<QuizMetadata[]>(this.apiBase + "/api/quizes")
+        return this.http.get<QuizMetadata[]>(this.apiBase + "/api/quizes/app")
             .pipe(
                 catchError(error => {
                     console.error(error);
