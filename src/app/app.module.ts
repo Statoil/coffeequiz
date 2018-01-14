@@ -13,7 +13,6 @@ import {VotingButtonComponent} from "../components/voting-button/voting-button";
 import {HttpClientModule} from "@angular/common/http";
 import {QuizServiceProvider} from '../providers/quiz-service/quiz-service';
 import {SelectQuizPage} from "../pages/select-quiz/select-quiz";
-import {File} from "@ionic-native/file";
 
 @NgModule({
     declarations: [
@@ -44,8 +43,7 @@ import {File} from "@ionic-native/file";
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         AnimationService,
-        QuizServiceProvider,
-        File
+        QuizServiceProvider
     ]
 })
 export class AppModule {

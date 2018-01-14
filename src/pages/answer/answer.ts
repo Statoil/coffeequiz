@@ -27,10 +27,19 @@ export class AnswerPage {
         this.isCorrect = this.answer == this.truth;
         if (this.isCorrect) {
             this.messageHtml = `${this.answer} is correct!`;
+            AnswerPage.playAudio('../../assets/sounds/correct-answer.mp3');
         }
         else {
             this.messageHtml = `The correct answer is<br><br><u>${this.truth}</u>`;
+            AnswerPage.playAudio('../../assets/sounds/wrong-answer.mp3');
         }
+    }
+
+    private static playAudio(audioFileName: string): void {
+        const audioWrong = new Audio();
+        audioWrong.src = audioFileName;
+        audioWrong.load();
+        audioWrong.play();
     }
 
 }

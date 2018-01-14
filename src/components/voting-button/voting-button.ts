@@ -17,13 +17,46 @@ export class VotingButtonComponent {
     @Input() answerIndex: number;
 
     private animator: AnimationBuilder;
+    private displayValue: any;
+    private animations = [
+            {name: "bounce", hideAfter: false},
+            {name: "rubberBand", hideAfter: false},
+            {name: "swing", hideAfter: false},
+            {name: "wobble", hideAfter: false},
+            {name: "zoomOut", hideAfter: true},
+            {name: "rollOut", hideAfter: true},
+            {name: "bounceOut", hideAfter: true}
+        ];
     mode: string = ENV.mode;
 
+    constructor(
+        public animationService: AnimationService,
+        private elementRef: ElementRef,
+        public modalCtrl: ModalController,
+        private quizService: QuizServiceProvider,
+        private platform: Platform)
+    {
+        this.animator = animationService.builder();
+        this.elementRef = elementRef;
+    }
+
     buttonClick() {
+        this.displayValue = this.elementRef.nativeElement.style.display;
+        const animation = this.getAnimation();
         this.animator
-            .setType('rubberBand')
+            .setType(animation.name)
             .animate(this.elementRef.nativeElement)
-            .then(() => this.processAnswer());
+            .then(() => {
+                if (animation.hideAfter) {
+                    this.elementRef.nativeElement.style.display = "none";
+                }
+                this.processAnswer();
+            })
+    }
+
+    private getAnimation(): any {
+        const index = Math.round(Math.random() * (this.animations.length - 1));
+        return this.animations[index];
     }
 
     processAnswer() {
@@ -32,18 +65,15 @@ export class VotingButtonComponent {
             truth: this.quizItem.getTruthText()
         });
         modal.present();
+        modal.onDidDismiss(() => {
+            this.elementRef.nativeElement.style.display = this.displayValue;
+        });
         const response = new QuizResponse(this.quizItem.id, this.answerIndex, this.quizItem.isTrue(this.answerIndex), this.mode, this.getPlatform());
         this.quizService.saveResponse(response)
     }
 
     getPlatform(): string {
         return this.platform.is("ios") ? "ios" : "web";
-    }
-
-    constructor(public animationService: AnimationService, private elementRef: ElementRef,
-                public modalCtrl: ModalController, private quizService: QuizServiceProvider, private platform: Platform) {
-        this.animator = animationService.builder();
-        this.elementRef = elementRef;
     }
 
 }
