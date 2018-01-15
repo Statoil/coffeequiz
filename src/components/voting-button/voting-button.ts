@@ -21,8 +21,6 @@ export class VotingButtonComponent {
     private animations = [
             {name: "bounce", hideAfter: false},
             {name: "rubberBand", hideAfter: false},
-            {name: "swing", hideAfter: false},
-            {name: "wobble", hideAfter: false},
             {name: "zoomOut", hideAfter: true},
             {name: "rollOut", hideAfter: true},
             {name: "bounceOut", hideAfter: true}

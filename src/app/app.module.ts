@@ -15,6 +15,7 @@ import {QuizServiceProvider} from '../providers/quiz-service/quiz-service';
 import {SelectQuizPage} from "../pages/select-quiz/select-quiz";
 import {LoadErrorComponent} from "../components/load-error/load-error";
 import {LoadErrorPopoverComponent} from "../components/load-error-popover/load-error-popover";
+import {NativeAudio} from "@ionic-native/native-audio";
 
 @NgModule({
     declarations: [
@@ -48,7 +49,8 @@ import {LoadErrorPopoverComponent} from "../components/load-error-popover/load-e
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         AnimationService,
-        QuizServiceProvider
+        QuizServiceProvider,
+        NativeAudio
     ]
 })
 export class AppModule {
