@@ -6,7 +6,6 @@ import "rxjs/add/operator/map";
 import {ENV} from '@app/env';
 import {DomSanitizer} from "@angular/platform-browser";
 import {Observable} from "rxjs/Observable";
-import {catchError, map} from "rxjs/operators";
 import {QuizMetadata} from "../../app/quizmetadata";
 
 
@@ -33,13 +32,7 @@ export class QuizServiceProvider {
     getQuiz(quizId: string): Observable<QuizItem[]> {
         const url = `${this.apiBase}/api/quiz/app/${quizId}`;
         return this.http.get<any[]>(url)
-            .pipe(
-                map(data => this.mapData(data)),
-                catchError(error => {
-                    console.error("Error getting quiz: " + error.message);
-                    return [];
-                })
-            )
+            .map(data => this.mapData(data))
     }
 
     mapData(data: any): QuizItem[] {
@@ -54,13 +47,7 @@ export class QuizServiceProvider {
     }
 
     getQuizes(): Observable<QuizMetadata[]> {
-        return this.http.get<QuizMetadata[]>(this.apiBase + "/api/quizes/app")
-            .pipe(
-                catchError(error => {
-                    console.error(error);
-                    return []
-                })
-            )
+        return this.http.get<QuizMetadata[]>(this.apiBase + "/api/quizes/app");
     }
 
 }

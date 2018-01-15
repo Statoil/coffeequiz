@@ -13,6 +13,8 @@ import {VotingButtonComponent} from "../components/voting-button/voting-button";
 import {HttpClientModule} from "@angular/common/http";
 import {QuizServiceProvider} from '../providers/quiz-service/quiz-service';
 import {SelectQuizPage} from "../pages/select-quiz/select-quiz";
+import {LoadErrorComponent} from "../components/load-error/load-error";
+import {LoadErrorPopoverComponent} from "../components/load-error-popover/load-error-popover";
 
 @NgModule({
     declarations: [
@@ -20,7 +22,9 @@ import {SelectQuizPage} from "../pages/select-quiz/select-quiz";
         QuestionPage,
         AnswerPage,
         SelectQuizPage,
-        VotingButtonComponent
+        VotingButtonComponent,
+        LoadErrorComponent,
+        LoadErrorPopoverComponent
     ],
     imports: [
         BrowserModule,
@@ -36,7 +40,8 @@ import {SelectQuizPage} from "../pages/select-quiz/select-quiz";
         MyApp,
         QuestionPage,
         AnswerPage,
-        SelectQuizPage
+        SelectQuizPage,
+        LoadErrorPopoverComponent
     ],
     providers: [
         StatusBar,

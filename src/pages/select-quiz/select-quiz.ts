@@ -14,25 +14,32 @@ export class SelectQuizPage {
     quizes: QuizMetadata[];
     browseMode: boolean;
     mode: string = ENV.mode;
+    loadError: boolean = false;
 
-        constructor(public navCtrl: NavController,
+    constructor(public navCtrl: NavController,
                 public navParams: NavParams,
                 private quizService: QuizServiceProvider) {
         console.log("Select quiz");
-        this.browseMode = this.navParams.get('browseMode') === "true";
+        this.browseMode = this.navParams.get('browseMode') === "true" || this.mode === "dev";
     }
 
     // noinspection JSUnusedGlobalSymbols
     ionViewDidLoad() {
         this.quizService.getQuizes()
-            .subscribe(quizes => {
-                if (quizes && quizes.length === 1) {
-                    this.selectQuiz(quizes[0]);
-                }
-                else {
-                    this.quizes = quizes;
-                }
-            });
+            .subscribe(
+                (quizes) => {
+                    if (quizes && quizes.length === 1) {
+                        this.selectQuiz(quizes[0]);
+                    }
+                    else {
+                        this.loadError = false;
+                        this.quizes = quizes;
+                    }
+                },
+                (error) => {
+                    console.log(error);
+                    this.loadError = true;
+                });
     }
 
     selectQuiz(quizMetadata: QuizMetadata) {

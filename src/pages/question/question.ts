@@ -19,6 +19,7 @@ export class QuestionPage {
     intervalId: any;
     mode: string = ENV.mode;
     pollInterval: number = 120;
+    downloadError: boolean = false;
 
     goToPage(quizItemId: number) {
         this.quizItemIndex = Math.max(0, Math.min(quizItemId, this.quizData.length));
@@ -38,17 +39,23 @@ export class QuestionPage {
             return;
         }
         this.quizService.getQuiz(quizMetadata.id)
-            .subscribe(quizData => {
-                if (!quizData || quizData.length === 0) {
-                    return;
-                }
-                this.quizData = quizData;
-                this.quizItemIndex = QuestionPage.findQuizItemIndexByDate(quizData);
-                this.quizItem = this.quizData[this.quizItemIndex];
-                if (this.browseMode) {
-                    this.updateNavIndexes();
-                }
-            });
+            .subscribe(
+                (quizData) => {
+                    if (!quizData || quizData.length === 0) {
+                        return;
+                    }
+                    this.downloadError = false;
+                    this.quizData = quizData;
+                    this.quizItemIndex = QuestionPage.findQuizItemIndexByDate(quizData);
+                    this.quizItem = this.quizData[this.quizItemIndex];
+                    if (this.browseMode) {
+                        this.updateNavIndexes();
+                    }
+                },
+                (error) => {
+                    console.log(error);
+                    this.downloadError = true;
+                });
     }
 
     updateNavIndexes(): void {
