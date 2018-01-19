@@ -1,53 +1,46 @@
 page-question {
 
-  .question {
-    font-size: 2.5vw;
-    font-weight: bold;
-    font-family: 'Statoil Display Medium', "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Lucida, sans-serif;
-  }
+    .question {
+        font-size: 2.5vw;
+        font-weight: bold;
+        font-family: 'Statoil Display Medium', "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Lucida, sans-serif;
+    }
 
-  .nav-icon {
-    font-size: 3vw;
-    cursor: pointer;
-    position: fixed;
-    top: 45%;
-    z-index: 1;
-  }
+    .nav-icon {
+        font-size: 3vw;
+        cursor: pointer;
+        position: fixed;
+        top: 45%;
+        z-index: 1;
+    }
 
-  scroll-content {
-    display: flex;
-    flex-direction: column;
-  }
+    scroll-content {
+        display: flex;
+        flex-direction: column;
+    }
 
-  ion-grid {
-    padding: 0;
-    height: 100%;
-  }
+    ion-grid {
+        padding: 0;
+        height: 100%;
+    }
 
-  div.environment-label {
-    position: fixed;
-    top:0;
-    left:0;
-    color: color($colors, light);
-  }
+    .time-field {
+        font-size: 1vw;
+        font-family: 'Statoil Display Medium', "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Lucida, sans-serif;
+        position: fixed;
+        top: 0;
+        right: 24px;
+        z-index: 2;
+        color: color($colors, light);
+        margin: 2px;
+    }
 
-  .time-field {
-    font-size: 1vw;
-    font-family: 'Statoil Display Medium', "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Lucida, sans-serif;
-    position: fixed;
-    top: 0;
-    right: 24px;
-    z-index: 2;
-    color: color($colors, light);
-    margin: 2px;
-  }
-
-  .image-view {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
-    height: 100%;
-  }
+    .image-view {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 100%;
+        height: 100%;
+    }
 
 }

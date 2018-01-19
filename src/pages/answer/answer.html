@@ -1,35 +1,35 @@
 <!--suppress HtmlUnknownTarget -->
 <ion-content padding>
 
-  <ion-grid>
-    <ion-row *ngIf="isCorrect">
-      <ion-col col-3></ion-col>
-      <ion-col col-6 class="result" text-center><img src="assets/imgs/correct.png"></ion-col>
-      <ion-col col-3></ion-col>
-    </ion-row>
-    <ion-row *ngIf="!isCorrect">
-      <ion-col col-4></ion-col>
-      <ion-col col-4 class="result" text-center><img src="assets/imgs/incorrect.png"></ion-col>
-      <ion-col col-4></ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-1></ion-col>
-      <ion-col col-10 *ngIf="isCorrect" class="result" text-center>
-        <br>
-        {{answer}}
-        <br>
-        <br>
-        is correct!
-      </ion-col>
-      <ion-col col-10 *ngIf="!isCorrect" class="result" text-center>
-        <br>
-        The correct answer is
-        <br>
-        <br>
-        {{truth}}
-      </ion-col>
-      <ion-col col-1></ion-col>
-    </ion-row>
-  </ion-grid>
+    <ion-grid>
+        <ion-row *ngIf="isCorrect">
+            <ion-col col-3></ion-col>
+            <ion-col col-6 class="result" text-center><img src="assets/imgs/correct.png"></ion-col>
+            <ion-col col-3></ion-col>
+        </ion-row>
+        <ion-row *ngIf="!isCorrect">
+            <ion-col col-4></ion-col>
+            <ion-col col-4 class="result" text-center><img src="assets/imgs/incorrect.png"></ion-col>
+            <ion-col col-4></ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-1></ion-col>
+            <ion-col col-10 *ngIf="isCorrect" class="result" text-center>
+                <br>
+                {{answer}}
+                <br>
+                <br>
+                is correct!
+            </ion-col>
+            <ion-col col-10 *ngIf="!isCorrect" class="result" text-center>
+                <br>
+                The correct answer is
+                <br>
+                <br>
+                {{truth}}
+            </ion-col>
+            <ion-col col-1></ion-col>
+        </ion-row>
+    </ion-grid>
 
 </ion-content>
