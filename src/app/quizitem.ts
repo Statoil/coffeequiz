@@ -25,7 +25,7 @@ export class QuizItem {
         return this['alternative' + this.answer];
     }
 
-    isTrue(alternativeIndex: number) {
+    isCorrect(alternativeIndex: number) {
         return this.answer === alternativeIndex;
     }
 }

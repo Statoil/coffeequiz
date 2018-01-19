@@ -26,7 +26,7 @@ export class MyApp {
             statusBar.hide();
             setTimeout(function () {
                 splashScreen.hide();
-            }, 500);
+            }, 5000);
         });
     }
 }

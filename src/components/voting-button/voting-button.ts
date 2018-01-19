@@ -66,7 +66,7 @@ export class VotingButtonComponent {
         modal.onDidDismiss(() => {
             this.elementRef.nativeElement.style.display = this.displayValue;
         });
-        const response = new QuizResponse(this.quizItem.id, this.answerIndex, this.quizItem.isTrue(this.answerIndex), this.mode, this.getPlatform());
+        const response = new QuizResponse(this.quizItem.id, this.answerIndex, this.quizItem.isCorrect(this.answerIndex), this.mode, this.getPlatform());
         this.quizService.saveResponse(response)
     }
 

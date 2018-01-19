@@ -36,14 +36,17 @@ export class QuizServiceProvider {
     }
 
     mapData(data: any): QuizItem[] {
-        return data.map(item => new QuizItem(item.quizItemId,
+        return data.map(item => {
+            const imageUrl = item.imageUrl && !item.imageUrl.startsWith('http') ?  `${this.apiBase}/${item.imageUrl}` : item.imageUrl;
+            return new QuizItem(item.quizItemId,
                 item.question,
-                this.sanitizer.bypassSecurityTrustStyle(`url(${this.apiBase}/api/quiz/image/${item.imageId})`),
+                this.sanitizer.bypassSecurityTrustStyle(`url(${imageUrl})`),
                 item.alternative1,
                 item.alternative2,
                 item.alternative3,
                 item.answer,
-                new Date(item.startTime)));
+                new Date(item.startTime))
+        });
     }
 
     getQuizes(): Observable<QuizMetadata[]> {
