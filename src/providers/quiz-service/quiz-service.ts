@@ -30,7 +30,7 @@ export class QuizServiceProvider {
     }
 
     getQuiz(quizId: string): Observable<QuizItem[]> {
-        const url = `${this.apiBase}/api/quiz/app/${quizId}`;
+        const url = `${this.apiBase}/api/quiz/${quizId}`;
         return this.http.get<any[]>(url)
             .map(data => this.mapData(data))
     }
@@ -50,7 +50,7 @@ export class QuizServiceProvider {
     }
 
     getQuizes(): Observable<QuizMetadata[]> {
-        return this.http.get<QuizMetadata[]>(this.apiBase + "/api/quizes/app");
+        return this.http.get<QuizMetadata[]>(this.apiBase + "/api/quizes");
     }
 
 }
