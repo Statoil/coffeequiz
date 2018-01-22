@@ -16,6 +16,7 @@ import {SelectQuizPage} from "../pages/select-quiz/select-quiz";
 import {LoadErrorComponent} from "../components/load-error/load-error";
 import {LoadErrorPopoverComponent} from "../components/load-error-popover/load-error-popover";
 import {NativeAudio} from "@ionic-native/native-audio";
+import {Insomnia} from "@ionic-native/insomnia";
 
 @NgModule({
     declarations: [
@@ -50,7 +51,8 @@ import {NativeAudio} from "@ionic-native/native-audio";
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         AnimationService,
         QuizServiceProvider,
-        NativeAudio
+        NativeAudio,
+        Insomnia
     ]
 })
 export class AppModule {

@@ -6,13 +6,21 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 import {SelectQuizPage} from "../pages/select-quiz/select-quiz";
 import {NativeAudio} from "@ionic-native/native-audio";
 
+import { Insomnia } from '@ionic-native/insomnia';
+
 @Component({
     templateUrl: 'app.html'
 })
 export class MyApp {
     rootPage: any = SelectQuizPage;
 
-    constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private nativeAudio: NativeAudio) {
+    constructor(
+        platform: Platform,
+        statusBar: StatusBar,
+        splashScreen: SplashScreen,
+        private nativeAudio: NativeAudio,
+        private insomnia: Insomnia)
+    {
 
         platform.ready().then(() => {
             // Okay, so the platform is ready and our plugins are available.
@@ -27,6 +35,12 @@ export class MyApp {
             setTimeout(function () {
                 splashScreen.hide();
             }, 5000);
+
+            this.insomnia.keepAwake()
+                .then(
+                    () => console.log('Insomnia loaded successfully'),
+                    () => console.log('Insomnia did not load')
+                );
         });
     }
 }
