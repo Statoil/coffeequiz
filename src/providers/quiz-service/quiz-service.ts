@@ -39,6 +39,7 @@ export class QuizServiceProvider {
         return data.map(item => {
             const imageUrl = item.imageUrl && !item.imageUrl.startsWith('http') ?  `${this.apiBase}/${item.imageUrl}` : item.imageUrl;
             return new QuizItem(item.quizItemId,
+                item.quizId,
                 item.question,
                 this.sanitizer.bypassSecurityTrustStyle(`url(${imageUrl})`),
                 item.alternative1,

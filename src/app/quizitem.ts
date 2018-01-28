@@ -4,6 +4,7 @@ export class QuizItem {
 
     constructor(
         public id: number,
+        public quizId: string,
         public question: string,
         public imageUrl: SafeUrl,
         public alternative1: string,
