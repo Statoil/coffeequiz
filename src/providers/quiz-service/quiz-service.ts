@@ -46,7 +46,7 @@ export class QuizServiceProvider {
                 item.alternative2,
                 item.alternative3,
                 item.answer,
-                new Date(item.startTime))
+                new Date(item.date))
         });
     }
 
