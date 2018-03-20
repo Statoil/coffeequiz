@@ -1,25 +1,32 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {QuizItem} from "../../app/quizitem";
 import {NavParams,} from "ionic-angular";
 import * as _ from "lodash";
 import {QuizServiceProvider} from "../../providers/quiz-service/quiz-service";
 import {ENV} from '@app/env';
+import {AnimationBuilder, AnimationService} from "css-animator";
 
 @Component({
     selector: 'page-question',
     templateUrl: 'question.html',
 })
 export class QuestionPage {
+    @ViewChild('question') questionElement;
+    @ViewChild('imageview') imageViewElement;
+
     quizItem: QuizItem;
     quizData: QuizItem[];
     quizItemIndex: number;
     nextQuizItemId: number;
     prevQuizItemId: number;
     browseMode: boolean;
-    intervalId: any;
+    reloadIntervalId: any;
+    questionAnimIntervalId: any;
+    imageAnimIntervalId: any;
     mode: string = ENV.mode;
     pollInterval: number = 120;
     downloadError: boolean = false;
+    private animator: AnimationBuilder;
 
     goToPage(quizItemId: number) {
         this.quizItemIndex = Math.max(0, Math.min(quizItemId, this.quizData.length));
@@ -29,8 +36,11 @@ export class QuestionPage {
 
     constructor(
         private navParams: NavParams,
-        private quizService: QuizServiceProvider)
-    {}
+        private quizService: QuizServiceProvider,
+        animationService: AnimationService)
+    {
+        this.animator = animationService.builder();
+    }
 
     loadData(): void {
         const quizMetadata = this.navParams.get('quizMetadata');
@@ -72,18 +82,56 @@ export class QuestionPage {
     ngOnInit() {
         if (!this.browseMode) {
             console.log(`Server poll interval: ${this.pollInterval} seconds`);
-            this.intervalId = setInterval(() => this.loadData(), this.pollInterval * 1000);
+            this.reloadIntervalId = setInterval(() => this.loadData(), this.pollInterval * 1000);
         }
         else {
             console.log("Browse mode. Not polling server.");
         }
         this.loadData();
+        setTimeout(() => {
+            this.questionAnimIntervalId = setInterval(() => this.animateQuestion(),20000);
+        }, 5000);
+        this.imageAnimIntervalId    = setInterval(() => this.animateImage(),60000);
+
+    }
+
+    animateQuestion() {
+        const rowElement = this.questionElement.nativeElement.parentNode;
+        const parentHeight = rowElement.offsetHeight;
+        const prevStyleHeight = rowElement.style.height;
+        rowElement.style.height = (parentHeight - 1) + 'px';
+        this.animator
+            .setOptions({
+                type: 'rubberBand',
+                reject: false,
+                fixed: false
+            })
+            .animate(this.questionElement.nativeElement)
+            .then(() => {
+                rowElement.style.height = prevStyleHeight;
+            });
+    }
+
+    animateImage() {
+        this.animator
+            .setOptions({
+                type: 'flash',
+                reject: false,
+                fixed: false
+            })
+            .animate(this.imageViewElement.nativeElement)
     }
 
     // noinspection JSUnusedGlobalSymbols
     ngOnDestroy() {
-        if (this.intervalId) {
-            clearTimeout(this.intervalId);
+        if (this.reloadIntervalId) {
+            clearInterval(this.reloadIntervalId);
+        }
+        if (this.questionAnimIntervalId) {
+            clearInterval(this.questionAnimIntervalId);
+        }
+        if (this.imageAnimIntervalId) {
+            clearInterval(this.imageAnimIntervalId);
         }
     }
 }

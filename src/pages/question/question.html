@@ -2,11 +2,11 @@
 <ion-content padding *ngIf="quizItem">
     <ion-grid>
         <ion-row>
-            <ion-col text-center class="question">{{quizItem.question}}</ion-col>
+            <ion-col class="question"><div #question style="display:block">{{quizItem.question}}</div></ion-col>
         </ion-row>
         <ion-row style="flex: 1">
             <ion-col style="padding: 30px">
-                <div [style.background-image]="quizItem.imageUrl" class="image-view"></div>
+                <div #imageview [style.background-image]="quizItem.imageUrl" class="image-view"></div>
             </ion-col>
         </ion-row>
 

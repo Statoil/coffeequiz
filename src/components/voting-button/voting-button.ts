@@ -18,12 +18,15 @@ export class VotingButtonComponent {
 
     private animator: AnimationBuilder;
     private displayValue: any;
+    private clickAnimationOngoing: boolean;
+    private animationIntervalId: any;
     private animations = [
             {name: "bounce", hideAfter: false},
             {name: "rubberBand", hideAfter: false},
             {name: "zoomOut", hideAfter: true},
             {name: "rollOut", hideAfter: true},
-            {name: "bounceOut", hideAfter: true}
+            {name: "bounceOut", hideAfter: true},
+            {name: "flip", hideAfter: false}
         ];
     mode: string = ENV.mode;
 
@@ -38,9 +41,16 @@ export class VotingButtonComponent {
         this.elementRef = elementRef;
     }
 
+    ngOnInit() {
+        setTimeout(() => {
+            this.animationIntervalId = setInterval(() => this.shakeButton(), 20000);
+        }, 15000);
+    }
+
     buttonClick() {
         this.displayValue = this.elementRef.nativeElement.style.display;
         const animation = this.getAnimation();
+        this.clickAnimationOngoing = true;
         this.animator
             .setType(animation.name)
             .animate(this.elementRef.nativeElement)
@@ -65,13 +75,40 @@ export class VotingButtonComponent {
         modal.present();
         modal.onDidDismiss(() => {
             this.elementRef.nativeElement.style.display = this.displayValue;
+            this.clickAnimationOngoing = false;
         });
         const response = new QuizResponse(this.quizItem.id, this.quizItem.quizId, this.answerIndex, this.quizItem.isCorrect(this.answerIndex), this.mode, this.getPlatform());
-        this.quizService.saveResponse(response)
+        this.quizService.saveResponse(response);
     }
 
     getPlatform(): string {
         return this.platform.is("ios") ? "ios" : "web";
+    }
+
+    shakeButton(): void {
+        if (this.clickAnimationOngoing) {
+            return;
+        }
+        const rowElement = this.elementRef.nativeElement.parentNode;
+        const parentHeight = rowElement.offsetHeight;
+        const prevOffsetHeight = rowElement.style.height;
+        rowElement.style.height = parentHeight + 'px';
+        this.animator
+            .setOptions({
+                type: 'tada',
+                reject: false
+            })
+            .animate(this.elementRef.nativeElement)
+            .then(() => {
+                rowElement.style.height = prevOffsetHeight;
+            })
+    }
+
+    // noinspection JSUnusedGlobalSymbols
+    ngOnDestroy() {
+        if (this.animationIntervalId) {
+            clearInterval(this.animationIntervalId);
+        }
     }
 
 }
