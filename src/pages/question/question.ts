@@ -87,7 +87,9 @@ export class QuestionPage {
     ngOnInit() {
         if (!this.browseMode) {
             console.log(`Server poll interval: ${this.pollInterval} seconds`);
-            this.reloadIntervalId = setInterval(() => this.loadData(), this.pollInterval * 1000);
+            setTimeout(() => {
+                this.reloadIntervalId = setInterval(() => this.loadData(), this.pollInterval * 1000);
+            }, 30000);
         }
         else {
             console.log("Browse mode. Not polling server.");
