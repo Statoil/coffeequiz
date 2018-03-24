@@ -18,4 +18,4 @@
 
 </ion-content>
 <div class="environment-label" *ngIf="mode === 'dev'">{{mode}}</div>
-<load-error *ngIf="loadError"></load-error>
+<load-error *ngIf="errorMessage" [errorMessage]="errorMessage"></load-error>

@@ -14,7 +14,7 @@ export class SelectQuizPage {
     quizes: QuizMetadata[];
     browseMode: boolean;
     mode: string = ENV.mode;
-    loadError: boolean = false;
+    errorMessage: string;
 
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
@@ -32,13 +32,13 @@ export class SelectQuizPage {
                         this.selectQuiz(quizes[0]);
                     }
                     else {
-                        this.loadError = false;
+                        this.errorMessage = "";
                         this.quizes = quizes;
                     }
                 },
                 (error) => {
                     console.log(error);
-                    this.loadError = true;
+                    this.errorMessage = "CoffeeQuiz cannot read data from the server.<br><br>Please check you Internet connection.";
                 });
     }
 

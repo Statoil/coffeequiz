@@ -25,7 +25,7 @@
 
 </ion-content>
 <div class="environment-label" *ngIf="mode === 'dev'">{{mode}}</div>
-<load-error *ngIf="downloadError"></load-error>
+<load-error *ngIf="errorMessage" [errorMessage]="errorMessage"></load-error>
 <ion-icon class="nav-icon" style="left: 20px" name="arrow-dropleft-circle" (click)="goToPage(prevQuizItemId)"
           color="light" *ngIf="(prevQuizItemId !== undefined) && browseMode"></ion-icon>
 <ion-icon class="nav-icon" style="right: 20px" name="arrow-dropright-circle" (click)="goToPage(nextQuizItemId)"

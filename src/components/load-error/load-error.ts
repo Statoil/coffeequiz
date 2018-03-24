@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {PopoverController} from "ionic-angular";
 import {LoadErrorPopoverComponent} from "../load-error-popover/load-error-popover";
 
@@ -8,12 +8,12 @@ import {LoadErrorPopoverComponent} from "../load-error-popover/load-error-popove
     templateUrl: 'load-error.html'
 })
 export class LoadErrorComponent {
-    text: string;
+    @Input() errorMessage: string;
 
     constructor(public popoverCtrl: PopoverController) {}
 
     presentPopover(myEvent) {
-        let popover = this.popoverCtrl.create(LoadErrorPopoverComponent);
+        let popover = this.popoverCtrl.create(LoadErrorPopoverComponent, {errorMessage: this.errorMessage});
         popover.present({
             ev: myEvent
         });

@@ -25,8 +25,8 @@ export class QuestionPage {
     imageAnimIntervalId: any;
     mode: string = ENV.mode;
     pollInterval: number = 120;
-    downloadError: boolean = false;
     private animator: AnimationBuilder;
+    public errorMessage: string;
 
     goToPage(quizItemId: number) {
         this.quizItemIndex = Math.max(0, Math.min(quizItemId, this.quizData.length));
@@ -54,7 +54,7 @@ export class QuestionPage {
                     if (!quizData || quizData.length === 0) {
                         return;
                     }
-                    this.downloadError = false;
+                    this.errorMessage = "";
                     this.quizData = quizData;
                     this.quizItemIndex = QuestionPage.findQuizItemIndexByDate(quizData);
                     this.quizItem = this.quizData[this.quizItemIndex];
@@ -64,7 +64,7 @@ export class QuestionPage {
                 },
                 (error) => {
                     console.log(error);
-                    this.downloadError = true;
+                    this.errorMessage = "CoffeeQuiz cannot read data from the server.<br><br>Please check you Internet connection.";
                 });
     }
 
@@ -99,7 +99,7 @@ export class QuestionPage {
         const rowElement = this.questionElement.nativeElement.parentNode;
         const parentHeight = rowElement.offsetHeight;
         const prevStyleHeight = rowElement.style.height;
-        rowElement.style.height = (parentHeight - 1) + 'px';
+        rowElement.style.height = parentHeight + 'px';
         this.animator
             .setOptions({
                 type: 'rubberBand',

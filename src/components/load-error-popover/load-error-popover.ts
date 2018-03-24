@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ViewController} from "ionic-angular";
+import {NavParams, ViewController} from "ionic-angular";
 import * as _ from "lodash";
 
 
@@ -8,17 +8,18 @@ import * as _ from "lodash";
     templateUrl: 'load-error-popover.html'
 })
 export class LoadErrorPopoverComponent {
+    errorMessage: string;
 
-    text: string;
-
-    constructor(public viewCtrl: ViewController) {
-        console.log('Hello LoadErrorPopoverComponent Component');
-        this.text = 'Hello World';
+    constructor(public viewCtrl: ViewController, private navParams: NavParams) {
         _.delay(() => viewCtrl.dismiss(), 50000);
     }
 
     close() {
         this.viewCtrl.dismiss();
+    }
+
+    ngOnInit() {
+        this.errorMessage = this.navParams.get("errorMessage");
     }
 }
 
