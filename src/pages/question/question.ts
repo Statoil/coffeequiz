@@ -5,6 +5,7 @@ import * as _ from "lodash";
 import {QuizServiceProvider} from "../../providers/quiz-service/quiz-service";
 import {ENV} from '@app/env';
 import {AnimationBuilder, AnimationService} from "css-animator";
+import {QuizMetadata} from "../../app/quizmetadata";
 
 @Component({
     selector: 'page-question',
@@ -43,7 +44,7 @@ export class QuestionPage {
     }
 
     loadData(): void {
-        const quizMetadata = this.navParams.get('quizMetadata');
+        const quizMetadata: QuizMetadata = this.navParams.get('quizMetadata');
         this.browseMode = this.navParams.get('browseMode');
         if (!quizMetadata) {
             return;
@@ -54,7 +55,11 @@ export class QuestionPage {
                     if (!quizData || quizData.length === 0) {
                         return;
                     }
-                    this.errorMessage = "";
+                    if (quizData.length !== _.toNumber(quizMetadata.numberOfItems)) {
+                        this.errorMessage = "One or more quiz items were not loaded properly.<br><br>Please contact IT Support."
+                    } else {
+                        this.errorMessage = "";
+                    }
                     this.quizData = quizData;
                     this.quizItemIndex = QuestionPage.findQuizItemIndexByDate(quizData);
                     this.quizItem = this.quizData[this.quizItemIndex];

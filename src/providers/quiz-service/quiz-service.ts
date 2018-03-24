@@ -36,7 +36,12 @@ export class QuizServiceProvider {
     }
 
     mapData(data: any): QuizItem[] {
-        return data.map(item => {
+        const quizItems = data.map(item => {
+            //Validate object. Discard if not all properties present
+            if (!item.quizId || !item.question || !item.imageUrl || !item.alternative1 || !item.alternative2 || !item.alternative3
+                || !item.answer || !item.date) {
+                return {}
+            }
             const imageUrl = item.imageUrl && !item.imageUrl.startsWith('http') ?  `${this.apiBase}/${item.imageUrl}` : item.imageUrl;
             return new QuizItem(item.quizItemId,
                 item.quizId,
@@ -48,6 +53,7 @@ export class QuizServiceProvider {
                 item.answer,
                 new Date(item.date))
         });
+        return quizItems.filter(item => item.quizId);
     }
 
     getQuizes(): Observable<QuizMetadata[]> {
