@@ -23,7 +23,6 @@ export class QuestionPage {
     browseMode: boolean;
     reloadIntervalId: any;
     questionAnimIntervalId: any;
-    imageAnimIntervalId: any;
     mode: string = ENV.mode;
     pollInterval: number = 120;
     private animator: AnimationBuilder;
@@ -98,7 +97,6 @@ export class QuestionPage {
         setTimeout(() => {
             this.questionAnimIntervalId = setInterval(() => this.animateQuestion(),20000);
         }, 5000);
-        this.imageAnimIntervalId    = setInterval(() => this.animateImage(),60000);
 
     }
 
@@ -119,16 +117,6 @@ export class QuestionPage {
             });
     }
 
-    animateImage() {
-        this.animator
-            .setOptions({
-                type: 'flash',
-                reject: false,
-                fixed: false
-            })
-            .animate(this.imageViewElement.nativeElement)
-    }
-
     // noinspection JSUnusedGlobalSymbols
     ngOnDestroy() {
         if (this.reloadIntervalId) {
@@ -136,9 +124,6 @@ export class QuestionPage {
         }
         if (this.questionAnimIntervalId) {
             clearInterval(this.questionAnimIntervalId);
-        }
-        if (this.imageAnimIntervalId) {
-            clearInterval(this.imageAnimIntervalId);
         }
     }
 }
