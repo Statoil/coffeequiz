@@ -57,7 +57,8 @@ export class QuizServiceProvider {
     }
 
     getQuizes(): Observable<QuizMetadata[]> {
-        return this.http.get<QuizMetadata[]>(this.apiBase + "/api/quizes");
+        return this.http.get<QuizMetadata[]>(this.apiBase + "/api/quizes")
+            .map(quizMetadataList => quizMetadataList.filter(quizMetadata => Number(quizMetadata.numberOfItems) > 0));
     }
 
 }
