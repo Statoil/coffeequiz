@@ -11,15 +11,16 @@ import {QuizMetadata} from "../../app/quizmetadata";
 
 @Injectable()
 export class QuizServiceProvider {
-    apiBase: string = ENV.apiBase;
+
+    apiBase: string = ENV.serverName + "/api/v1.0";
 
     constructor(
         public http: HttpClient,
         private sanitizer: DomSanitizer)
     {}
 
-    saveResponse(quizResponse: QuizResponse): void {
-        const url = this.apiBase + '/api/quiz-response';
+    saveResponse(quizId: string, quizResponse: QuizResponse): void {
+        const url =  `${this.apiBase}/quiz/${quizId}/response`;
         this.http
             .post(url, quizResponse)
             .subscribe(
@@ -30,7 +31,7 @@ export class QuizServiceProvider {
     }
 
     getQuiz(quizId: string): Observable<QuizItem[]> {
-        const url = `${this.apiBase}/api/quiz/${quizId}`;
+        const url = `${this.apiBase}/quiz/${quizId}/items`;
         return this.http.get<any[]>(url)
             .map(data => this.mapData(data))
     }
@@ -42,7 +43,7 @@ export class QuizServiceProvider {
                 || !item.answer || !item.date) {
                 return {}
             }
-            const imageUrl = item.imageUrl && !item.imageUrl.startsWith('http') ?  `${this.apiBase}/${item.imageUrl}` : item.imageUrl;
+            const imageUrl = item.imageUrl && !item.imageUrl.startsWith('http') ?  `${ENV.serverName}/${item.imageUrl}` : item.imageUrl;
             return new QuizItem(item.quizItemId,
                 item.quizId,
                 item.question,
@@ -57,8 +58,11 @@ export class QuizServiceProvider {
     }
 
     getQuizes(): Observable<QuizMetadata[]> {
-        return this.http.get<QuizMetadata[]>(this.apiBase + "/api/quizes")
+        const url = this.apiBase + "/quiz/notcompleted";
+        setTimeout(() => console.log('Retrieving all (non completed) quizes from: ' + url), 3000);
+        return this.http.get<QuizMetadata[]>(url)
             .map(quizMetadataList => quizMetadataList.filter(quizMetadata => Number(quizMetadata.numberOfItems) > 0));
+
     }
 
 }

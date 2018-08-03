@@ -41,6 +41,7 @@ export class VotingButtonComponent {
         this.elementRef = elementRef;
     }
 
+    // noinspection JSUnusedGlobalSymbols
     ngOnInit() {
         setTimeout(() => {
             this.animationIntervalId = setInterval(() => this.shakeButton(), 20000);
@@ -77,8 +78,8 @@ export class VotingButtonComponent {
             this.elementRef.nativeElement.style.display = this.displayValue;
             this.clickAnimationOngoing = false;
         });
-        const response = new QuizResponse(this.quizItem.id, this.quizItem.quizId, this.answerIndex, this.quizItem.isCorrect(this.answerIndex), this.mode, this.getPlatform());
-        this.quizService.saveResponse(response);
+        const response = new QuizResponse(this.quizItem.id, this.answerIndex, this.quizItem.isCorrect(this.answerIndex), this.mode, this.getPlatform());
+        this.quizService.saveResponse(this.quizItem.quizId, response);
     }
 
     getPlatform(): string {

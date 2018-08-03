@@ -1,7 +1,7 @@
 // noinspection JSUnusedGlobalSymbols
 export const ENV = {
     mode: "dev",
-    //apiBase: 'http://192.168.2.50:3000'
-    //apiBase: 'https://coffeequiz-test.azurewebsites.net'
-    apiBase: 'http://localhost:3000'
+    //serverName: 'http://172.20.10.2:3000'
+    //serverName: 'https://coffeequiz-test.azurewebsites.net'
+    serverName: 'http://localhost:3000'
 };

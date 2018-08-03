@@ -28,6 +28,7 @@ export class SelectQuizPage {
         this.quizService.getQuizes()
             .subscribe(
                 (quizes) => {
+                    setTimeout(() => console.log('Quizes retrieved: ' + quizes), 3000);
                     if (quizes && quizes.length === 1) {
                         this.selectQuiz(quizes[0]);
                     }
@@ -37,7 +38,7 @@ export class SelectQuizPage {
                     }
                 },
                 (error) => {
-                    console.log(error);
+                    setTimeout(() => console.log('Error retrieving quizes: ' + JSON.stringify(error)), 3000);
                     this.errorMessage = "CoffeeQuiz cannot read data from the server.<br><br>Please check you Internet connection.";
                 });
     }
