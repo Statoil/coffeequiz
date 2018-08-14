@@ -12,7 +12,7 @@ import {QuizMetadata} from "../../app/quizmetadata";
 @Injectable()
 export class QuizServiceProvider {
 
-    apiBase: string = ENV.serverName + "/api/v1.0";
+    apiBase: string = ENV.apiUrl + "/api/v1.0";
 
     constructor(
         public http: HttpClient,
@@ -43,7 +43,7 @@ export class QuizServiceProvider {
                 || !item.answer || !item.date) {
                 return {}
             }
-            const imageUrl = item.imageUrl && !item.imageUrl.startsWith('http') ?  `${ENV.serverName}/${item.imageUrl}` : item.imageUrl;
+            const imageUrl = item.imageUrl && !item.imageUrl.startsWith('http') ?  `${ENV.apiUrl}/${item.imageUrl}` : item.imageUrl;
             return new QuizItem(item.quizItemId,
                 item.quizId,
                 item.question,
