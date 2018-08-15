@@ -6,23 +6,27 @@ import "rxjs/add/operator/map";
 import {ENV} from '@app/env';
 import {DomSanitizer} from "@angular/platform-browser";
 import {Observable} from "rxjs/Observable";
-import {QuizMetadata} from "../../app/quizmetadata";
+import {HttpHeaders} from '@angular/common/http';
 
 
 @Injectable()
 export class QuizServiceProvider {
 
     apiBase: string = ENV.apiUrl + "/api/v1.0";
+    requestOptions: any;
 
     constructor(
         public http: HttpClient,
         private sanitizer: DomSanitizer)
-    {}
+    {
+        const token = "dummy-token";
+        this.requestOptions = {headers: new HttpHeaders().set('X-COFFEEQUIZ-TOKEN', token)};
+    }
 
     saveResponse(quizId: string, quizResponse: QuizResponse): void {
         const url =  `${this.apiBase}/quiz/${quizId}/response`;
         this.http
-            .post(url, quizResponse)
+            .post(url, quizResponse, this.requestOptions)
             .subscribe(
                 () => {
                 },
@@ -32,7 +36,7 @@ export class QuizServiceProvider {
 
     getQuiz(quizId: string): Observable<QuizItem[]> {
         const url = `${this.apiBase}/quiz/${quizId}/items`;
-        return this.http.get<any[]>(url)
+        return this.http.get<any[]>(url, this.requestOptions)
             .map(data => this.mapData(data))
     }
 
@@ -57,11 +61,13 @@ export class QuizServiceProvider {
         return quizItems.filter(item => item.quizId);
     }
 
-    getQuizes(): Observable<QuizMetadata[]> {
+    getQuizes(): Observable<any[]> {
         const url = this.apiBase + "/quiz/notcompleted";
         setTimeout(() => console.log('Retrieving all (non completed) quizes from: ' + url), 3000);
-        return this.http.get<QuizMetadata[]>(url)
-            .map(quizMetadataList => quizMetadataList.filter(quizMetadata => Number(quizMetadata.numberOfItems) > 0));
+        return this.http.get<any[]>(url, this.requestOptions)
+            .map(quizMetadataList => {
+                return quizMetadataList.filter(quizMetadata => Number(quizMetadata.numberOfItems) > 0)
+            });
 
     }
 
