@@ -1,11 +1,11 @@
 <!--suppress HtmlUnknownTag -->
-<ion-content padding *ngIf="quizes">
+<ion-content padding *ngIf="quizes" class="select-quiz">
     <ion-grid>
         <ion-row>
             <ion-col text-center>
                 <H1>Select quiz</H1>
                 <ion-list>
-                    <button ion-item *ngFor="let quiz of quizes" class="dark" (click)="selectQuiz(quiz)">
+                    <button ion-item *ngFor="let quiz of quizes" color="light" (click)="selectQuiz(quiz)">
                         <h2>{{quiz.name}}</h2>
                         <h3>{{quiz.numberOfItems}} questions</h3>
                         <p>{{quiz.startTime | date: 'EEE dd. MMM yy'}} - {{quiz.endTime | date: 'EEE dd. MMM yy'}}</p>

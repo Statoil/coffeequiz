@@ -8,8 +8,11 @@ import {NativeAudio} from "@ionic-native/native-audio";
 
 import { Insomnia } from '@ionic-native/insomnia';
 
+import { QuizServiceProvider } from "../providers/quiz-service/quiz-service";
+
 @Component({
-    templateUrl: 'app.html'
+    templateUrl: 'app.html',
+    providers: [QuizServiceProvider]
 })
 export class MyApp {
     rootPage: any = SelectQuizPage;

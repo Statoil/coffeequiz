@@ -10,6 +10,7 @@ import {QuizMetadata} from "../../app/quizmetadata";
 @Component({
     selector: 'page-question',
     templateUrl: 'question.html',
+    providers: []
 })
 export class QuestionPage {
     @ViewChild('question') questionElement;
@@ -44,7 +45,7 @@ export class QuestionPage {
 
     loadData(): void {
         const quizMetadata: QuizMetadata = this.navParams.get('quizMetadata');
-        this.browseMode = this.navParams.get('browseMode');
+        this.browseMode = this.mode === "dev";
         if (!quizMetadata) {
             return;
         }
@@ -97,6 +98,7 @@ export class QuestionPage {
         setTimeout(() => {
             this.questionAnimIntervalId = setInterval(() => this.animateQuestion(),20000);
         }, 5000);
+
 
     }
 

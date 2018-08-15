@@ -10,7 +10,7 @@ import {ENV} from '@app/env';
 @Component({
     selector: 'voting-button',
     templateUrl: 'voting-button.html',
-    providers: [QuizServiceProvider]
+    providers: []
 })
 export class VotingButtonComponent {
     @Input() quizItem: QuizItem;

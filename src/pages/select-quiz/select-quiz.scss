@@ -1,8 +1,8 @@
 page-select-quiz {
-    h2, h3, p {
-        color: color($colors, light);
-    }
-    .dark {
-        background: color($colors, dark);
+
+    .select-quiz {
+        font-family: 'Statoil Display Medium', "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Lucida, sans-serif;
+        background: color($colors, light);
+        color: color($colors, dark);
     }
 }

@@ -17,6 +17,9 @@ import {LoadErrorComponent} from "../components/load-error/load-error";
 import {LoadErrorPopoverComponent} from "../components/load-error-popover/load-error-popover";
 import {NativeAudio} from "@ionic-native/native-audio";
 import {Insomnia} from "@ionic-native/insomnia";
+import {StorageProvider} from '../providers/storage/storage';
+import {IonicStorageModule} from '@ionic/storage';
+import {AuthPage} from "../pages/auth/auth";
 
 @NgModule({
     declarations: [
@@ -24,18 +27,16 @@ import {Insomnia} from "@ionic-native/insomnia";
         QuestionPage,
         AnswerPage,
         SelectQuizPage,
+        AuthPage,
         VotingButtonComponent,
         LoadErrorComponent,
         LoadErrorPopoverComponent
     ],
     imports: [
         BrowserModule,
-        IonicModule.forRoot(MyApp, {}, {
-            links: [
-                {component: SelectQuizPage, name: 'SelectQuiz', segment: 'browse/:browseMode'}
-            ]
-        }),
-        HttpClientModule
+        IonicModule.forRoot(MyApp, {}),
+        HttpClientModule,
+        IonicStorageModule.forRoot()
     ],
     bootstrap: [IonicApp],
     entryComponents: [
@@ -43,6 +44,7 @@ import {Insomnia} from "@ionic-native/insomnia";
         QuestionPage,
         AnswerPage,
         SelectQuizPage,
+        AuthPage,
         LoadErrorPopoverComponent
     ],
     providers: [
@@ -52,7 +54,8 @@ import {Insomnia} from "@ionic-native/insomnia";
         AnimationService,
         QuizServiceProvider,
         NativeAudio,
-        Insomnia
+        Insomnia,
+        StorageProvider
     ]
 })
 export class AppModule {

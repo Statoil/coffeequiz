@@ -13,15 +13,12 @@ import {HttpHeaders} from '@angular/common/http';
 export class QuizServiceProvider {
 
     apiBase: string = ENV.apiUrl + "/api/v1.0";
-    requestOptions: any;
+    requestOptions: any = {};
 
     constructor(
         public http: HttpClient,
         private sanitizer: DomSanitizer)
-    {
-        const token = "dummy-token";
-        this.requestOptions = {headers: new HttpHeaders().set('X-COFFEEQUIZ-TOKEN', token)};
-    }
+    {}
 
     saveResponse(quizId: string, quizResponse: QuizResponse): void {
         const url =  `${this.apiBase}/quiz/${quizId}/response`;
@@ -65,10 +62,15 @@ export class QuizServiceProvider {
         const url = this.apiBase + "/quiz/notcompleted";
         setTimeout(() => console.log('Retrieving all (non completed) quizes from: ' + url), 3000);
         return this.http.get<any[]>(url, this.requestOptions)
-            .map(quizMetadataList => {
-                return quizMetadataList.filter(quizMetadata => Number(quizMetadata.numberOfItems) > 0)
-            });
+            .map(quizMetadataList => this.filterQuizes(quizMetadataList));
+    }
 
+    filterQuizes(quizMetadataList) {
+        return quizMetadataList.filter(quizMetadata => Number(quizMetadata.numberOfItems) > 0)
+    }
+
+    setToken(token: string) {
+        this.requestOptions = {headers: new HttpHeaders().set('X-COFFEEQUIZ-TOKEN', token)};
     }
 
 }
