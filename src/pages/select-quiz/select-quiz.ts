@@ -31,6 +31,9 @@ export class SelectQuizPage {
                     this.quizService.getQuizes()
                         .subscribe((quizes) => this.processQuizes(quizes),
                             (error) => {
+                                if (error.status === 401) {
+                                    this.navCtrl.push(AuthPage);
+                                }
                                 setTimeout(() => console.log('Error retrieving quizes: ' + JSON.stringify(error)), 3000);
                                 this.errorMessage = "CoffeeQuiz cannot read data from the server.<br><br>Please check you Internet connection.";
                             });

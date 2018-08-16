@@ -1,11 +1,12 @@
 import {Component, ViewChild} from '@angular/core';
 import {QuizItem} from "../../app/quizitem";
-import {NavParams,} from "ionic-angular";
+import {NavController, NavParams,} from "ionic-angular";
 import * as _ from "lodash";
 import {QuizServiceProvider} from "../../providers/quiz-service/quiz-service";
 import {ENV} from '@app/env';
 import {AnimationBuilder, AnimationService} from "css-animator";
 import {QuizMetadata} from "../../app/quizmetadata";
+import {AuthPage} from "../auth/auth";
 
 @Component({
     selector: 'page-question',
@@ -36,6 +37,7 @@ export class QuestionPage {
     }
 
     constructor(
+        public navCtrl: NavController,
         private navParams: NavParams,
         private quizService: QuizServiceProvider,
         animationService: AnimationService)
@@ -68,6 +70,9 @@ export class QuestionPage {
                     }
                 },
                 (error) => {
+                    if (error.status === 401) {
+                        this.navCtrl.push(AuthPage);
+                    }
                     console.log(error);
                     this.errorMessage = "CoffeeQuiz cannot read data from the server.<br><br>Please check you Internet connection.";
                 });

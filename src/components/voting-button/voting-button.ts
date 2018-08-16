@@ -1,11 +1,12 @@
 import {Component, ElementRef, Input} from '@angular/core';
 import {AnimationBuilder, AnimationService} from "css-animator";
 import {AnswerPage} from "../../pages/answer/answer";
-import {ModalController, Platform} from "ionic-angular";
+import {ModalController, NavController, Platform} from "ionic-angular";
 import {QuizItem} from "../../app/quizitem";
 import {QuizServiceProvider} from "../../providers/quiz-service/quiz-service";
 import {QuizResponse} from "../../app/quizresponse";
 import {ENV} from '@app/env';
+import {AuthPage} from "../../pages/auth/auth";
 
 @Component({
     selector: 'voting-button',
@@ -31,6 +32,7 @@ export class VotingButtonComponent {
     mode: string = ENV.mode;
 
     constructor(
+        public navCtrl: NavController,
         public animationService: AnimationService,
         private elementRef: ElementRef,
         public modalCtrl: ModalController,
@@ -79,7 +81,16 @@ export class VotingButtonComponent {
             this.clickAnimationOngoing = false;
         });
         const response = new QuizResponse(this.quizItem.id, this.answerIndex, this.quizItem.isCorrect(this.answerIndex), this.mode, this.getPlatform());
-        this.quizService.saveResponse(this.quizItem.quizId, response);
+        this.quizService.saveResponse(this.quizItem.quizId, response)
+            .subscribe(
+                () => {
+                },
+                error => {
+                    if (error.status === 401) {
+                        this.navCtrl.push(AuthPage);
+                    }
+                }
+            );
     }
 
     getPlatform(): string {
