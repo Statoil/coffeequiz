@@ -6,8 +6,6 @@ import "rxjs/add/operator/map";
 import {ENV} from '@app/env';
 import {DomSanitizer} from "@angular/platform-browser";
 import {Observable} from "rxjs/Observable";
-import {QuizMetadata} from "../../app/quizmetadata";
-import {map} from "rxjs/operators";
 
 
 @Injectable()
@@ -54,16 +52,15 @@ export class QuizServiceProvider {
         return quizItems.filter(item => item.quizId);
     }
 
-    getQuizes(): Observable<QuizMetadata[]> {
+    getQuizes(): Observable<any[]> {
         const url = this.apiBase + "/quiz/notcompleted";
         setTimeout(() => console.log('Retrieving all (non completed) quizes from: ' + url), 3000);
         return this.http.get<any[]>(url, this.requestOptions)
-            .pipe(
-                map(quizMetadataList => this.filterQuizes(quizMetadataList))
-            )
+            .map(quizMetadataList => this.filterQuizes(quizMetadataList))
+
     }
 
-    filterQuizes(quizMetadataList: QuizMetadata[]): QuizMetadata[] {
+    filterQuizes(quizMetadataList): any[] {
         return quizMetadataList.filter(quizMetadata => Number(quizMetadata.numberOfItems) > 0)
     }
 

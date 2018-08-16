@@ -28,7 +28,7 @@ export class AuthPage {
         this.storageProvider.setToken(token)
             .then(() => {
                 this.quizService.setToken(token);
-                this.navCtrl.push(SelectQuizPage);
+                this.navCtrl.setRoot(SelectQuizPage);
             })
             .catch(error => {
                 console.error(error);

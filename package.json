@@ -75,7 +75,8 @@
       "cordova-plugin-file": {},
       "cordova-plugin-nativeaudio": {},
       "cordova-plugin-insomnia": {},
-      "cordova-sqlite-storage": {}
+      "cordova-sqlite-storage": {},
+      "cordova-plugin-device": {}
     }
   }
 }
