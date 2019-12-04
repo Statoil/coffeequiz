@@ -5,8 +5,14 @@ CoffeeQuiz will record all responses (for statistics).
 A new question is displayed every week day until the last question in the quiz is reached.
 
 
+### Publishing a new version
+When ready to publish a new version, remember to:
+- Update version number in config.xml
+- Update version number on splash screen, and run `ionic cordova resources`
+
+
 ### Deployment instructions
-Build project by running `ionic build ios`
+Build project by running `ionic build --prod`
 Open project in XCode
 Build project
 Archive project
