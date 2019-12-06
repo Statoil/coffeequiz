@@ -34,7 +34,7 @@ export class SelectQuizPage {
                                 if (error.status === 401) {
                                     this.navCtrl.push(AuthPage);
                                 }
-                                setTimeout(() => console.log('Error retrieving quizes: ' + JSON.stringify(error)), 3000);
+                                console.error('Error retrieving quizes: ' + JSON.stringify(error));
                                 this.errorMessage = "CoffeeQuiz cannot read data from the server.<br><br>Please check you Internet connection.";
                             });
                 }
@@ -45,7 +45,7 @@ export class SelectQuizPage {
     }
 
     processQuizes(quizes) {
-        setTimeout(() => console.log('Quizes retrieved: ' + quizes), 3000);
+        console.log('Quizes retrieved: ' + JSON.stringify(quizes));
         if (quizes && quizes.length === 1) {
             this.selectQuiz(quizes[0]);
         }

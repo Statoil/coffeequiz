@@ -73,7 +73,7 @@ export class QuestionPage {
                     if (error.status === 401) {
                         this.navCtrl.push(AuthPage);
                     }
-                    console.log(error);
+                    console.error("Error loading quiz! " + error);
                     this.errorMessage = "CoffeeQuiz cannot read data from the server.<br><br>Please check you Internet connection.";
                 });
     }

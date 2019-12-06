@@ -1,11 +1,11 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Injectable} from '@angular/core';
-import {QuizResponse} from "../../app/quizresponse";
-import {QuizItem} from "../../app/quizitem";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { QuizResponse } from "../../app/quizresponse";
+import { QuizItem } from "../../app/quizitem";
 import "rxjs/add/operator/map";
-import {ENV} from '@app/env';
-import {DomSanitizer} from "@angular/platform-browser";
-import {Observable} from "rxjs/Observable";
+import { ENV } from '@app/env';
+import { DomSanitizer } from "@angular/platform-browser";
+import { Observable } from "rxjs/Observable";
 
 
 @Injectable()
@@ -16,8 +16,7 @@ export class QuizServiceProvider {
 
     constructor(
         public http: HttpClient,
-        private sanitizer: DomSanitizer)
-    {}
+        private sanitizer: DomSanitizer) { }
 
     saveResponse(quizId: string, quizResponse: QuizResponse): Observable<any> {
         const url = `${this.apiBase}/quiz/${quizId}/response`;
@@ -38,7 +37,13 @@ export class QuizServiceProvider {
                 || !item.answer || !item.date) {
                 return {}
             }
-            const imageUrl = item.imageUrl && !item.imageUrl.startsWith('http') ? `${ENV.apiUrl}/${item.imageUrl}` : item.imageUrl;
+            let imageUrl = "";
+            if (!item.imageUrl || typeof item.imageUrl !== "string") {
+                console.error(`Quiz item id ${item.quizId} is missing image URL!`);
+            }
+            else {
+                imageUrl = !item.imageUrl.startsWith('http') ? `${ENV.apiUrl}/${item.imageUrl}` : item.imageUrl;
+            }
             return new QuizItem(item.quizItemId,
                 item.quizId,
                 item.question,
@@ -65,7 +70,7 @@ export class QuizServiceProvider {
     }
 
     setToken(token: string) {
-        this.requestOptions = {headers: new HttpHeaders().set('X-COFFEEQUIZ-TOKEN', token)};
+        this.requestOptions = { headers: new HttpHeaders().set('X-COFFEEQUIZ-TOKEN', token) };
     }
 
 }
