@@ -1,4 +1,9 @@
 # CoffeeQuiz
+
+**CoffeeQuiz is no longer being maintained. The GitHub project has been archived.**
+
+## Description
+
 CoffeeQuiz is an iPad app, created with the Ionic framework.
 It is designed to display a question, an image and 3 alternative answers.
 CoffeeQuiz will record all responses (for statistics).
